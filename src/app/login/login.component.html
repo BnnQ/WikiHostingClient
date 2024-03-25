@@ -1,0 +1,125 @@
+
+<body>
+    <header class="main-header">
+        <div class="logo">
+            <img src="assets/images/LOGO.png" alt="logo">
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#">Games</a></li>
+                <li><a href="#">Anime</a></li>
+                <li><a href="#">Movies</a></li>
+                <li><a href="#">TV</a></li>
+                <li><a href="#">Video</a></li>
+                <li><a href="#">Wikis</a></li>
+            </ul>
+        </nav>
+        <div class="additional-links">
+            <ul>
+                <li><a href="#"><img src="assets/images/profile.png" alt="profile"></a></li>
+                <li><a href="#"><img src="assets/images/search.png" alt="search"></a></li>
+                <li><a href="#"><img src="assets/images/wiki.png" alt="wiki"></a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="main">
+        <div class="centered-div">
+            <div class="left-half">
+                <img src="assets/images/KARTINKA.png" alt="KARTINKA">
+            </div>
+            <div class="right-half">
+                <div class="signin-container">
+                    <h1>SIGN IN</h1>
+                    <hr>
+                    <div *ngIf="errorMsg" class="errMsg">{{ errorMsg }}</div>
+                    <form (ngSubmit)="login()">
+                        
+                        <div>
+                            <input class="form-control" placeholder="Username" id="username" [(ngModel)]="username" name="username"
+                                type="text">
+                        </div>
+                        <div>
+                            <input class="form-control" placeholder="Password" id="password" [(ngModel)]="password" name="password"
+                                type="password">
+                        </div>
+                        <div class="remember-forgot">
+                            <div class="remember-me">
+                                <input type="checkbox" id="remember-me" [(ngModel)]="rememberMe" name="rememberMe">
+                                <label for="remember-me">Remember me?</label>
+                            </div>
+                            <div class="forgot-password">
+                                <a href="#">Forgot password</a>
+                            </div>
+                        </div>
+                        
+                        <button class="btn-sign" type="submit">SIGN IN</button>
+                    </form>
+                </div>
+                <p class="p1">Or, Use social account to sign in</p>
+                <div class="login-links">
+                    <a href="#"><img src="assets/images/google.png"></a>
+                    <a href="#"><img src="assets/images/facebook.png"></a>
+                    <a href="#"><img src="assets/images/apple.png"></a>
+                    <a href="#"><img src="assets/images/twich.png"></a>
+                </div>
+                <p class="p1">New user? <a href="/register">Register Now</a> </p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-section">
+            <img src="assets/images/LOGO.png">
+        </div>
+        <div class="footer-section">
+            <p>LALALA</p>
+            <div class="info">
+                <a href="#">Support</a>
+                <a href="#">Contacts Us About Advertise</a>
+                <a href="#">FAQs</a>
+                <a href="#">Privacy and Policy</a>
+                <a href="#">Terms of Use</a>
+                <a href="#">Do Not Sell or Share My</a>
+                <a href="#">Personal Information</a>
+            </div>
+        </div>
+        <div class="footer-section">
+            <p>LALALA</p>
+            <div class="info">
+                <a href="#">What is "Name"?</a>
+                <a href="#">About Us</a>
+                <a href="#">Contacts</a>
+                <a href="#">Media Kit(Merch)</a>
+            </div>
+
+
+        </div>
+        <div class="footer-section">
+            <p>GAMEPEDIA APPS</p>
+            <div class="container">
+                
+                <div id="image">
+                    <img src="assets/images/gamepad.png">
+                </div>
+                <div class="images">
+                    <img src="assets/images/gplay.png">
+                    <br>
+                    <img src="assets/images/appstore.png">
+                </div>
+            </div>
+            <p>FOLLOW US</p>
+            <div class="socialLinks">
+                <a href="#"><img src="assets/images/facebook2.png"></a>
+                <a href="#"><img src="assets/images/twitter.png"></a>
+                <a href="#"><img src="assets/images/youtube.png"></a>
+                <a href="#"><img src="assets/images/inst.png"></a>
+                <a href="#"><img src="assets/images/in.png"></a>
+            </div>
+
+
+        </div>
+    </footer>
+
+</body>
+
