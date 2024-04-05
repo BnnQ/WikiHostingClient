@@ -1,0 +1,41 @@
+<app-wiki-layout *ngIf="wiki" [wiki]="wiki" [numberOfPages]="numberOfPages">
+  <!-- Angular HTML -->
+  <div class="container">
+    <header>
+      <h1>Welcome Wiki Fan!</h1>
+      <p>Let's build this community together.</p>
+    </header>
+
+    <div class="content">
+      <div class="main-container">
+        <section class="cards">
+          <div *ngFor="let card of cards" class="card">
+            <!--      <h2><fa-icon [icon]="faT" class="custom-icon"></fa-icon> {{card.title}}</h2>-->
+            <div class="custom-button">
+              <div class="icon-wrapper">
+                <fa-icon [icon]="card.icon" class="custom-icon"></fa-icon>
+              </div>
+              <div class="title">{{card.title}}</div>
+            </div>
+            <ul>
+              <li *ngFor="let task of card.tasks"><a href="#">{{task}}</a></li>
+            </ul>
+          </div>
+        </section>
+
+      </div>
+
+      <aside style="padding: 15px; height: fit-content">
+        <div style="color: #e6e6e6; margin-bottom: 15px; font-size: 16px; font-weight: 600">Meet the Admins</div>
+        <div class="admins-mods">
+          <div *ngFor="let admin of admins" class="admin">
+            <img [src]="admin.avatarPath" alt="{{admin.username}}">
+            <div class="nickname">{{admin.username}}</div>
+          </div>
+        </div>
+        <div style="color: #e6e6e6; margin-bottom: 15px; font-size: 14px; line-height: 1.75; margin-top: 12px">Ask us anything. We'd love to hear what brought you to this wiki</div>
+      </aside>
+    </div>
+
+  </div>
+</app-wiki-layout>
