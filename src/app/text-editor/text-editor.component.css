@@ -1,0 +1,42 @@
+* {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.editor-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid blue;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.button-row {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-bottom: 1px solid blue;
+  padding: 10px 0;
+}
+
+.editor-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.text-area {
+  flex: 3;
+  display: flex;
+}
+
+.editable-text {
+  flex: 1;
+  width: 100%;
+  min-height: 100px;
+  border: none;
+  box-sizing: border-box;
+  resize: none;
+  outline: none;
+}
