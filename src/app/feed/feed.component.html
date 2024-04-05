@@ -1,0 +1,33 @@
+<div class="main">
+  <div class="feed">
+    <div *ngFor="let page of pages" class="card">
+      <div class="card-header">
+        <div class="author-info">
+          <img [src]="page.author.avatarPath" alt="{{page.author.username}}" class="author-avatar">
+          <div class="author-nickname">{{page.author.username}}</div>
+        </div>
+        <div class="date">{{page.createdAt | date}}</div>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{page.title}}</h5>
+        <img [src]="page.imagePath" alt="{{page.title}}" class="article-image">
+      </div>
+      <div class="card-footer">
+        <div class="icon-group">
+          <div class="likes">
+            <fa-icon [icon]="faHeart"></fa-icon>
+            {{page.numberOfLikes}}
+          </div>
+          <div class="comments">
+            <fa-icon [icon]="faComment"></fa-icon>
+            {{page.numberOfComments}}
+          </div>
+          <button class="share-btn">
+            <fa-icon [icon]="faShareSquare"></fa-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
