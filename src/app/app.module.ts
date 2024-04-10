@@ -10,11 +10,16 @@ import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { SearchComponent } from './search/search.component';
+import { CreateTemplateComponent } from './create-template/create-template.component';
+import { SelectTemplateComponent } from './select-template/select-template.component';
 
 const appRoutes: Routes = [
   {path:'', component:HomeComponent},
   {path:'signin', component:LoginComponent},
   {path:'register', component:RegistrationComponent},
+  {path:'search', component:SearchComponent},
+  {path:'createTemplate', component:CreateTemplateComponent},
 ]
 
 @NgModule({
@@ -22,7 +27,10 @@ const appRoutes: Routes = [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    SearchComponent,
+    CreateTemplateComponent,
+    SelectTemplateComponent
   ],
   imports: [
     BrowserModule,
