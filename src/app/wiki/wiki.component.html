@@ -1,0 +1,4 @@
+<app-wiki-layout *ngIf="wiki" [wiki]="wiki" [numberOfPages]="numberOfPages">
+<!--  <div style="background-color: red; width: 200px; height: 200px"></div>-->
+  <div *ngIf="page" [innerHtml]="page.processedHtml"></div>
+</app-wiki-layout>

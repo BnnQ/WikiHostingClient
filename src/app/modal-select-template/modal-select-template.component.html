@@ -1,0 +1,17 @@
+<div class="modal" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h1 style="font-weight: lighter; color: #d9d9d9; font-family: Kelly Slab;">TEMPLATES</h1>
+    <hr style="border: 1px solid #DF622C;">
+    <p style="color: #d9d9d9;">Select whatever you want</p>
+    <form>
+      <input type="text" placeholder="Search" id="template" name="template" (input)="searchTemplates($event)">
+    </form>
+    <div class="templates">
+      <div class="template-container">
+        <div class="template" *ngFor="let template of templates">
+          <div>{{ template.name }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

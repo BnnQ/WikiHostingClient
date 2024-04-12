@@ -1,0 +1,92 @@
+#main {
+  background-image: url('/assets/background.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
+  min-height: 100vh;
+}
+
+.transparent {
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-container {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Adjust this value to change the space between the logo and the center container */
+}
+
+.center-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.right-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px; /* Adjust this value to change the space between the menu items and the page counter */
+}
+
+.menu-items {
+  margin-bottom: 10px;
+  display: flex;
+  gap: 15px; /* Adjust this value to change the space between the menu items */
+}
+
+.page-counter {
+  color: white;
+}
+
+.page-count {
+  margin-right: 10px;
+}
+
+.page-count-number, .page-count-text {
+  display: block;
+  text-align: center;
+
+}
+
+.nav-link {
+  color: white;
+  font-size: 12px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.nav-link:hover {
+  color: #ccc;
+  text-decoration: underline;
+}
+
+.wiki-title {
+  color: white;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.icon-button
+{
+  color: white;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  padding: 3px 10px;
+}
+
+.icon-group {
+  display: flex;
+  border: 1px solid white; /* Adjust color as needed */
+  border-radius: 3px;
+}
+
+.separator {
+  border-left: 1px solid white; /* Adjust color as needed */
+  height: auto;
+}

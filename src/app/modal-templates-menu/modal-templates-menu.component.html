@@ -1,0 +1,14 @@
+<div class="modal">
+  <div class="modal-header">
+    <h1 class="modal-title">Templates</h1>
+    <button class="close-button" (click)="modalService.close()">X</button>
+  </div>
+  <p class="modal-subtitle">Select whatever you want</p>
+  <input type="text" placeholder="Search..." class="search-bar">
+  <div class="gallery">
+    <div *ngFor="let template of templates" (click)="selectTemplate(template)">
+      <img [src]="template.imagePath" alt="{{template.name}}">
+      <p class="template-name">{{template.name}}</p>
+    </div>
+  </div>
+</div>

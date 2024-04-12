@@ -1,0 +1,149 @@
+/* CSS */
+.content {
+  display: flex;
+  flex-direction: row;
+  background-color: #272525;
+
+}
+
+.main-container {
+  min-height: 83.4vh;
+  flex-grow: 1;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  text-align: center;
+  color: white;
+  background-color: #777;
+  padding: 20px;
+}
+/* CSS */
+.cards {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 20px;
+  width: 90%;
+}
+
+.card {
+  background-color: #474646;
+  color: white;
+  margin: 10px;
+  width: 250px;
+  padding: 0; /* Remove padding */
+  /*flex-basis: calc(100% / 5 - 40px);*/
+  box-sizing: border-box;
+  display: flex; /* Make card a flex container */
+  flex-direction: column; /* Stack elements vertically */
+  border-radius: 3px;
+}
+
+.card .title {
+  font-size: 14px;
+  font-weight: bold;
+  font-family: sans-serif;
+  letter-spacing: .25px;
+  line-height: 1.25;
+  max-width: 70%;
+  text-transform: uppercase;
+}
+
+.card ul {
+  height: 80%; /* 80% of the card's height */
+  max-height: 180px;
+  overflow-y: auto; /* Add scrollbar if content overflows */
+  list-style-type: none;
+  padding: 10px;
+  margin: 0;
+}
+
+.card ul a {
+  text-decoration: none;
+  color: #3F9C7F;
+  font-size: 14px;
+}
+
+.card ul li {
+  margin-bottom: 18px;
+}
+
+.card ul a:hover {
+  text-decoration: underline;
+}
+
+.admins-mods {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  justify-items: center;
+}
+
+aside {
+  margin: 20px;
+  background-color: #474646;
+  width: 270px;
+  border-radius: 3px;
+}
+
+.admin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  color: #ccc;
+}
+
+.admin img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 3px #575555 solid;
+}
+
+.nickname {
+  font-weight: 600;
+}
+
+/*.custom-icon {*/
+/*  color: #4CAF50; !* Makes the icon transparent *!*/
+/*  font-size: 0.8em;*/
+/*  border: 12px solid white; !* Adds a white border *!*/
+/*  border-radius: 50%; !* Makes the border circular *!*/
+/*  background-color: white;*/
+/*  background-clip: padding-box; !* Ensures the background color doesn't bleed into the border *!*/
+/*}*/
+
+
+.custom-button {
+  background-color: #337f50;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 10px 10px 20px;
+}
+
+.custom-icon {
+  color: #337f50;
+}
+
+.icon-wrapper {
+  background-color: white;
+  border-radius: 50%;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 23px; /* Adjust as needed */
+  height: 23px; /* Adjust as needed */
+  margin-right: 10px;
+}

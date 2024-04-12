@@ -1,0 +1,21 @@
+<div class="editor-container">
+  <div class="button-row">
+    <button class="editor-button" (click)="bold()"><fa-icon [icon]="faBold"></fa-icon></button>
+    <button class="editor-button" (click)="italic()"><fa-icon [icon]="faItalic"></fa-icon></button>
+    <button class="editor-button" (click)="underline()"><fa-icon [icon]="faUnderline"></fa-icon></button>
+    <button class="editor-button" (click)="strikethrough()"><fa-icon [icon]="faStrikethrough"></fa-icon></button>
+    <button class="editor-button" (click)="erase()"><fa-icon [icon]="faEraser"></fa-icon></button>
+    <button class="editor-button"><fa-icon [icon]="faUndo"></fa-icon></button>
+    <button class="editor-button"><fa-icon [icon]="faRedo"></fa-icon></button>
+    <button class="editor-button"><fa-icon [icon]="faListUl"></fa-icon></button>
+    <button class="editor-button"><fa-icon [icon]="faListOl"></fa-icon></button>
+    <button class="editor-button"><fa-icon [icon]="faQuoteRight"></fa-icon></button>
+    <button class="editor-button"><fa-icon [icon]="faLink"></fa-icon></button>
+    <button class="editor-button"><fa-icon [icon]="faImage"></fa-icon></button>
+    <button class="editor-button" (click)="openTemplateMenu()"><fa-icon [icon]="faPuzzlePiece"></fa-icon></button>
+  </div>
+  <div class="text-area">
+<!--    <textarea class="editable-text" rows="7"></textarea>-->
+    <div #editable class="editable-text" contenteditable="true">Lorem ipsum dolor sit amet</div>
+  </div>
+</div>

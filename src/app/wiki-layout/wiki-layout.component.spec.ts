@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SelectTemplateComponent } from './select-template.component';
+import { WikiLayoutComponent } from './wiki-layout.component';
 
-describe('SelectTemplateComponent', () => {
-  let component: SelectTemplateComponent;
-  let fixture: ComponentFixture<SelectTemplateComponent>;
+describe('WikiLayoutComponent', () => {
+  let component: WikiLayoutComponent;
+  let fixture: ComponentFixture<WikiLayoutComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SelectTemplateComponent]
+      declarations: [WikiLayoutComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(SelectTemplateComponent);
+    fixture = TestBed.createComponent(WikiLayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
