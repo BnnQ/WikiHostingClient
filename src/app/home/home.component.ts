@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  showModal:boolean = false;
 
+  openModal() {
+    console.log("modal opened")
+    this.showModal = true;
+  }
+
+  closeModal() {
+    console.log("modal close")
+    this.showModal = false;
+  }
 }

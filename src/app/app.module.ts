@@ -10,6 +10,10 @@ import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+
+import { SearchComponent } from './search/search.component';
+import { CreateTemplateComponent } from './create-template/create-template.component';
+
 import {WikiLayoutComponent} from "./wiki-layout/wiki-layout.component";
 import {WikiComponent} from "./wiki/wiki.component";
 import {WikiContributorsComponent} from "./wiki-contributors/wiki-contributors.component";
@@ -28,6 +32,7 @@ import {ApiPageRepository} from "../services/api-page-repository";
 import { TextEditorComponent } from './text-editor/text-editor.component';
 import { DevComponent } from './dev/dev.component';
 import { ModalTemplatesMenuComponent } from './modal-templates-menu/modal-templates-menu.component';
+import { ModalSelectTemplateComponent } from './modal-select-template/modal-select-template.component';
 
 const appRoutes: Routes = [
   {path:'', component: HomeComponent },
@@ -48,13 +53,16 @@ export const SERVICE_IDENTIFIERS = {
     HomeComponent,
     LoginComponent,
     RegistrationComponent,
+    SearchComponent,
+    CreateTemplateComponent,
     WikiLayoutComponent,
     WikiComponent,
     WikiContributorsComponent,
     FeedComponent,
     TextEditorComponent,
     DevComponent,
-    ModalTemplatesMenuComponent
+    ModalTemplatesMenuComponent,
+    ModalSelectTemplateComponent
   ],
   imports: [
     BrowserModule,

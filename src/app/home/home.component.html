@@ -1,1 +1,4 @@
 <p>Home page of WikiHosting</p>
+
+<app-modal-select-template *ngIf="showModal" (closeModalEvent)="closeModal()"></app-modal-select-template>
+<button (click)="openModal()">openModal</button> 
