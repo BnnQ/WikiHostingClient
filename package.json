@@ -46,5 +46,11 @@
   },
   "engines": {
     "node": ">=18.13.0"
+  },
+  "browser": {
+    "http": false,
+    "https": false,
+    "url": false,
+    "util": false
   }
 }
