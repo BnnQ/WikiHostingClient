@@ -33,6 +33,11 @@ import { TextEditorComponent } from './text-editor/text-editor.component';
 import { DevComponent } from './dev/dev.component';
 import { ModalTemplatesMenuComponent } from './modal-templates-menu/modal-templates-menu.component';
 import { ModalSelectTemplateComponent } from './modal-select-template/modal-select-template.component';
+import { SubscribeComponent } from './subscribe/subscribe/subscribe.component';
+import { MainComponent } from './main-page/main/main/main.component';
+import { HeaderComponent } from './main-page/introduction/header/header/header.component';
+import { ContentComponent } from './main-page/introduction/content/content/content.component';
+import { FooterComponent } from './main-page/introduction/footer/footer/footer.component';
 
 const appRoutes: Routes = [
   {path:'', component: HomeComponent },
@@ -62,7 +67,12 @@ export const SERVICE_IDENTIFIERS = {
     TextEditorComponent,
     DevComponent,
     ModalTemplatesMenuComponent,
-    ModalSelectTemplateComponent
+    ModalSelectTemplateComponent,
+    MainComponent,
+    SubscribeComponent,
+    HeaderComponent,
+    ContentComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

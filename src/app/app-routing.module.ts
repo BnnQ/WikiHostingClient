@@ -9,9 +9,11 @@ import { RegistrationComponent } from './registration/registration.component';
 import { DevComponent } from './dev/dev.component';
 import { SearchComponent } from './search/search.component';
 import { CreateTemplateComponent } from './create-template/create-template.component';
+import { SubscribeComponent } from './subscribe/subscribe/subscribe.component';
+import { MainComponent } from './main-page/main/main/main.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: MainComponent },
   { path: 'wiki/:id', component: WikiComponent },
   { path: 'wiki/:id/page/:pageId', component: WikiComponent },
   { path: 'wiki/:id/contributors', component: WikiContributorsComponent },
@@ -21,6 +23,7 @@ const routes: Routes = [
   { path: 'DEV', component: DevComponent },
   { path: 'search', component: SearchComponent },
   { path: 'createTemplate', component: CreateTemplateComponent },
+  { path:'subscribe',component:SubscribeComponent}
 ];
 
 @NgModule({

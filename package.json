@@ -24,6 +24,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "axios": "^1.6.8",
+    "material-design-icons": "^3.0.1",
     "ngx-modal-ease": "^0.0.7",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

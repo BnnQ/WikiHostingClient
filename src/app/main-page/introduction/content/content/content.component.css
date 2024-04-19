@@ -1,0 +1,69 @@
+.content {
+  width: 1170px;
+  height: 600px;
+  /* top: 138px;
+  left: 135px; */
+  margin: 3em auto;
+  display: flex;
+  /* justify-content: flex-end; */
+  /* flex-direction: column; */
+}
+
+.left-block {
+  width: 507px;
+  height: 278px;
+  /* top: 377px;
+  left: 205px; */
+  /* position: absolute; */
+  font-family: 'Kelly Slab', serif;
+  font-size: 52px;
+  font-weight: 400;
+  line-height: 63.02px;
+  letter-spacing: 0.02em;
+  text-align: left;
+  color: #EFEFEF;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 10px solid #D9D9D9;
+  flex: 50%;
+  align-self: flex-end;
+  margin-bottom: 1em;
+}
+
+.left-block button {
+  width: 265px;
+  height: 64px;
+  /* margin-top: 20px; */
+  background-color: #D9D9D9;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000000;
+}
+
+/* width: 549px;
+height: 600px;
+top: 138px;
+left: 756px;
+gap: 0px;
+border-radius: 8px 0px 0px 0px;
+opacity: 0px; */
+
+.right-block {
+  width: 549px;
+  height: 600px;
+  /* top: 138px;
+  left: 756px; */
+  /* position: absolute; */
+  border-radius: 0 8px 8px 0;
+  flex: 50%;
+  overflow: hidden;
+  /* background-image: url('../../../../../assets/images/diplom.png'); Путь к вашему изображению */
+  background-image: url('../../../../../assets/images/diplom.png');
+  background-size: cover; /* Масштабируем изображение так, чтобы оно полностью покрывало блок */
+  background-position: center; /* Центрируем изображение */
+
+}

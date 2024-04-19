@@ -1,0 +1,37 @@
+.footer {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* 1-я колонка для логотипа, 2-я для категорий */
+  gap: 20px; /* Расстояние между колонками */
+background: #2B0054;
+  color: #fff;
+  margin: 0 50px;
+}
+
+.footer-logo {
+  grid-column: 1 / 2; /* От 1-й до 2-й колонки */
+}
+
+.footer-categories {
+  grid-column: 2 / 3; /* От 2-й до 3-й колонки */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 колонки для категорий */
+  gap: 20px; /* Расстояние между категориями */
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+}
+
+.category h2 {
+  font-size: 18px;
+}
+
+.category ul {
+  list-style: none;
+  padding: 0;
+}
+
+.category ul li {
+  font-size: 14px;
+}

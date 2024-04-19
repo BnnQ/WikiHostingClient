@@ -1,0 +1,37 @@
+.header {
+  background-color: #2B0054;
+  padding: 10px; /* отступ по бокам */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+.categories {
+  display: flex;
+}
+
+.categories a {
+  color: #ffffff; /* цвет текста */
+  margin-right: 10px; /* отступ между категориями */
+  text-decoration: none;
+}
+
+.categories a:hover {
+  text-decoration: underline;
+}
+
+.actions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 24px;
+  color: #ffffff;
+  margin-left: 10px; /* отступ между кнопками */
+}
+
+.actions button:hover {
+  color: #cccccc;
+}
