@@ -8,7 +8,12 @@ import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { DevComponent } from './dev/dev.component';
 import { SearchComponent } from './search/search.component';
-import { CreateTemplateComponent } from './create-template/create-template.component';
+import { ModalCreateTemplateComponent } from './modal-create-template/modal-create-template.component';
+import {ProfileComponent} from "./profile/profile.component";
+import {FeedbackComponent} from "./feedback/feedback.component";
+import {CreateWikiComponent} from "./create-wiki/create-wiki.component";
+import {CreatePageComponent} from "./create-page/create-page.component";
+import {EditPageComponent} from "./edit-page/edit-page.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,7 +25,12 @@ const routes: Routes = [
   { path: 'register', component: RegistrationComponent },
   { path: 'DEV', component: DevComponent },
   { path: 'search', component: SearchComponent },
-  { path: 'createTemplate', component: CreateTemplateComponent },
+  { path: 'createTemplate', component: ModalCreateTemplateComponent },
+  { path: 'profile/:id', component: ProfileComponent },
+  { path: 'feedback', component: FeedbackComponent },
+  { path: 'createWiki', component: CreateWikiComponent },
+  { path: 'wiki/:id/createPage', component: CreatePageComponent },
+  { path: 'wiki/:id/editPage/:pageId', component: EditPageComponent },
 ];
 
 @NgModule({
