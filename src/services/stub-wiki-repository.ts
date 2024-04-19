@@ -1,9 +1,10 @@
-import {Injectable} from "@angular/core";
+import {Injectable, model} from "@angular/core";
 import {IWikiRepository} from "./abstractions/i-wiki-repository";
 import {Wiki} from "../models/wiki";
 import { WikiUpsertDto } from "../models/dto/wiki-upsert-dto";
 import { Contributor } from "../models/contributor";
 import { ContributorUpsertDto } from "../models/dto/contributor-upsert-dto";
+import {ContributorRole} from "../models/contributor-role";
 
 @Injectable({providedIn: 'root'})
 export class StubWikiRepository implements IWikiRepository {
@@ -15,9 +16,16 @@ export class StubWikiRepository implements IWikiRepository {
   ];
 
   constructor() {
-    this.wikis.push(new Wiki(1, 'First wiki', false, 83249));
-    this.wikis.push(new Wiki(2, 'Second wiki', false, 25049));
-    this.wikis.push(new Wiki(3, 'Third wiki', false, 5673));
+    this.wikis.push(new Wiki(1, 'First wiki', false, 83249, 'https://via.placeholder.com/150', 'https://via.placeholder.com/200', [], [], 'Other'));
+    this.wikis.push(new Wiki(2, 'Second wiki', false, 25049, 'https://via.placeholder.com/150', 'https://via.placeholder.com/200', [], [], 'Other'));
+    this.wikis.push(new Wiki(3, 'Third wiki', false, 5673, 'https://via.placeholder.com/150', 'https://via.placeholder.com/200', [], [], 'Other'));
+  }
+
+  getContributorRoles(): Promise<ContributorRole[]> {
+    return Promise.resolve([
+      new ContributorRole(1, 'Owner'),
+      new ContributorRole(2, 'Contributor'),
+    ]);
   }
 
   getWikiContributor(wikiId: number, userId: number): Promise<Contributor | undefined> {
@@ -75,5 +83,11 @@ const contributor = this.contributors.find(contributor => contributor.wikiId ===
     contributor.contributorRoleId = model.contributorRoleId;
 
     return Promise.resolve();
+  }
+
+  createWiki(model: WikiUpsertDto): Promise<Wiki> {
+    const wiki = new Wiki(this.wikis.length + 1, model.name, false, 0, 'https://via.placeholder.com/150', 'https://via.placeholder.com/200', [], [], 'Other');
+    this.wikis.push(wiki);
+    return Promise.resolve(wiki);
   }
 }

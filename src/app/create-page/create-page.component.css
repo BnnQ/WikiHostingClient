@@ -1,0 +1,18 @@
+.container {
+  height: 100vh;
+  background-color: #2f2f2f;
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin: auto;
+}
+
+.text-area {
+  height: 90%;
+  background-color: #2f2f2f;
+  color: white;
+  resize: none;
+  border: none;
+  padding: 10px;
+}
+

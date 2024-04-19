@@ -24,7 +24,7 @@ export class StubUserRepository implements IUserRepository {
 
   registerUser(model: UserUpsertDto): Promise<User> {
     return new Promise<User>((resolve, reject) => {
-      const user = new User(this.users.length + 1, model.username, model.avatarPath);
+      const user = new User(this.users.length + 1, model.userName, model.avatarPath);
       this.users.push(user);
       resolve(user);
     });
@@ -34,7 +34,7 @@ export class StubUserRepository implements IUserRepository {
     return new Promise<User>((resolve, reject) => {
       const user = this.users.find(u => u.id === id);
       if (user) {
-        user.username = model.username;
+        user.userName = model.userName;
         user.avatarPath = model.avatarPath;
         resolve(user);
       } else {

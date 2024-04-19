@@ -1,4 +1,4 @@
-import {Inject, Injectable} from "@angular/core";
+import {Inject, Injectable, model} from "@angular/core";
 import {environment} from "../environments/environment";
 import {SERVICE_IDENTIFIERS} from "../app/app.module";
 import IHttpService from "./abstractions/i-http-service";
@@ -7,6 +7,7 @@ import {WikiUpsertDto} from "../models/dto/wiki-upsert-dto";
 import {Wiki} from "../models/wiki";
 import {Contributor} from "../models/contributor";
 import {ContributorUpsertDto} from "../models/dto/contributor-upsert-dto";
+import {ContributorRole} from "../models/contributor-role";
 
 @Injectable({providedIn: 'root'})
 export class ApiWikiRepository implements IWikiRepository {
@@ -14,6 +15,10 @@ export class ApiWikiRepository implements IWikiRepository {
 
   constructor(@Inject(SERVICE_IDENTIFIERS.IHttpService) private readonly httpService: IHttpService) {
 
+  }
+
+  getContributorRoles(): Promise<ContributorRole[]> {
+    return this.httpService.get<ContributorRole[]>(new URL(`${this.serverApiUrl}/wiki/contributors/roles`));
   }
 
   getWikiContributor(wikiId: number, userId: number): Promise<Contributor | undefined> {
@@ -49,6 +54,10 @@ export class ApiWikiRepository implements IWikiRepository {
 
   async removeWikiContributor(wikiId: number, userId: number): Promise<void> {
     await this.httpService.delete(new URL(`${this.serverApiUrl}/wiki/${wikiId}/contributors/${userId}`));
+  }
+
+  async createWiki(model: WikiUpsertDto): Promise<Wiki> {
+    return await this.httpService.post<Wiki>(new URL(`${this.serverApiUrl}/wiki`), model);
   }
 
 }

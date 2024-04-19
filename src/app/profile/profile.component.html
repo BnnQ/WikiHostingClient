@@ -1,0 +1,72 @@
+<section class="profile__section" *ngIf="user">
+  <div class="container">
+    <div class="profile__wrapper">
+      <div class="profile__wrapper_header">
+        <div class="profile__header_user">
+          <div class="profile__user_banner">
+            <img [src]="user.avatarPath" alt="" />
+          </div>
+          <div class="profile__user_info">
+            <div class="profile__info_title">
+              <h2 class="profile__title_nickname">{{ user.userName }}</h2>
+              <div class="profile__title_role">Administrator</div>
+            </div>
+            <div class="profile__info_actions">
+              <div class="profile__actions_edits">3940 EDITS</div>
+              <span class="profile__actions_circle"></span>
+              <div class="profile__actions_posts">174 POSTS</div>
+            </div>
+            <div class="profile__info_about">
+              <p class="profile__about_text">
+                Character type is hidden.
+              </p>
+            </div>
+            <div class="profile__info_discord">
+              <img
+                src="/assets/images/discord.svg"
+                alt=""
+                class="profile__discord_icon"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="profile__header_post">
+          <button class="profile__post_button" type="button">
+            Post to wall
+          </button>
+        </div>
+      </div>
+      <div class="profile__wrapper_main">
+        <div class="profile__main_tabs">
+          <div class="profile__tabs_item active">About</div>
+          <div class="profile__tabs_item">Message</div>
+          <div class="profile__tabs_item">Blog</div>
+          <div class="profile__tabs_item">Contributions</div>
+          <div class="profile__tabs_item">Activity</div>
+        </div>
+        <div class="profile__main_source">
+          <div class="profile__source_message">
+            <img
+              class="profile__message_icon"
+              src="/assets/images/lock-solid.svg"
+              alt=""
+            />
+            <p class="profile__message_text">View source</p>
+          </div>
+          <span class="profile__source_dash"></span>
+          <span class="profile__source_dots">
+            <img src="/assets/images/ellipsis-vertical-solid.svg" alt="" />
+          </span>
+        </div>
+        <div class="profile__main_block"></div>
+      </div>
+      <div class="profile__wrapper_footer">
+        <p class="profile__footer_text">
+          Community content is available under
+          <span class="profile__footer_primary">CC-BY-SA</span> unless otherwise
+          noted.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

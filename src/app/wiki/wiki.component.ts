@@ -7,6 +7,7 @@ import {IWikiRepository} from "../../services/abstractions/i-wiki-repository";
 import {Wiki} from "../../models/wiki";
 import {Page} from "../../models/page";
 import {IPageRepository} from "../../services/abstractions/i-page-repository";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-wiki',
@@ -20,14 +21,19 @@ export class WikiComponent implements OnInit {
   page?: Page;
   pageId: number = 0;
 
-  constructor(activatedRoute : ActivatedRoute, @Inject(SERVICE_IDENTIFIERS.IWikiRepository) private readonly wikiRepository : IWikiRepository, @Inject(SERVICE_IDENTIFIERS.IPageRepository) private readonly pageRepository : IPageRepository) {
+  constructor(activatedRoute : ActivatedRoute, private readonly sanitizer : DomSanitizer, @Inject(SERVICE_IDENTIFIERS.IWikiRepository) private readonly wikiRepository : IWikiRepository, @Inject(SERVICE_IDENTIFIERS.IPageRepository) private readonly pageRepository : IPageRepository) {
     this.wikiId = parseInt(activatedRoute.snapshot.paramMap.get('id')!);
     this.pageId = parseInt(activatedRoute.snapshot.paramMap.get('pageId') ?? '0');
-    console.log("wikiId: " + this.wikiId + " pageId: " + this.pageId);
+  }
+
+  getSafePageHtml() {
+    return this.sanitizer.bypassSecurityTrustHtml(this.page!.processedHtml);
   }
 
   async ngOnInit(): Promise<void> {
     this.wiki = await this.wikiRepository.getWiki(this.wikiId);
+    this.wiki!.id = this.wikiId;
+
     if (this.wiki)
     {
       this.numberOfPages = this.wiki.numberOfPages;

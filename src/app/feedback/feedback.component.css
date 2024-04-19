@@ -1,0 +1,34 @@
+* {
+  font-family: 'Helvetica', sans-serif;
+  color: #dedede;
+}
+
+/* feedback.component.css */
+.feedback-form {
+  background-color: rgb(24, 26, 27);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 39vh;
+  margin: 0 auto;
+  padding: 15% 20%;
+}
+
+.feedback-form h1 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.feedback-form textarea {
+  resize: none;
+  background-color: #131516;
+}
+
+.submit-button {
+  padding: 10px 30px;
+  font-size: 17px;
+  background-color: orange;
+  color: white;
+  border-radius: 6px;
+}

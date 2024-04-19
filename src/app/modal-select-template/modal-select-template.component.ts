@@ -1,17 +1,11 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-
-interface Template {
-  id: number;
-  name: string;
-  authorId: number;
-  author: string;
-  html: string;
-  css?: string;
-  js?: string;
-  variables?: string;
-  isPublic: boolean;
-}
+import {Component, EventEmitter, Inject, OnInit, Output} from '@angular/core';
+import {FormControl} from "@angular/forms";
+import {ModalService} from "ngx-modal-ease";
+import {SERVICE_IDENTIFIERS} from "../app.module";
+import {ITemplateRepository} from "../../services/abstractions/i-template-repository";
+import {debounceTime, distinctUntilChanged} from "rxjs";
+import {TemplateDto} from "../../models/dto/template-dto";
 
 @Component({
   selector: 'app-modal-select-template',
@@ -19,35 +13,24 @@ interface Template {
   styleUrls: ['./modal-select-template.component.css']
 })
 export class ModalSelectTemplateComponent implements OnInit {
-  templates: Template[] = [];
+  searchControl = new FormControl();
+  templates: TemplateDto[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(protected modalService: ModalService, @Inject(SERVICE_IDENTIFIERS.ITemplateRepository) private readonly templateRepository : ITemplateRepository) {
+    this.searchControl.valueChanges
+      .pipe(
+        debounceTime(500),
+        distinctUntilChanged()
+      )
+      .subscribe(async (value) => {
+        if (!value || value.length < 3) return;
 
-  getTemplates(searchTerm?: string) {
-    let apiUrl = 'https://localhost:7133/Template';
-    if (searchTerm) {
-      const params = new HttpParams().set('search', searchTerm);
-      apiUrl += `?${params.toString()}`;
-    }
-    return this.http.get<Template[]>(apiUrl);
+        this.templates = await this.templateRepository.getTemplates(value);
+      })
   }
 
-  ngOnInit(): void {
-    this.getTemplates().subscribe(templates => {
-      this.templates = templates;
-    });
+  async ngOnInit(): Promise<void> {
+    this.templates = await this.templateRepository.getTemplates('Bar');
   }
 
-  searchTemplates(event: any) {
-    const searchTerm = event.target.value.trim(); 
-    this.getTemplates(searchTerm).subscribe(templates => {
-      this.templates = templates;
-    });
-  }
-
-  @Output() closeModalEvent = new EventEmitter<boolean>();
-
-  closeModal() {
-    this.closeModalEvent.emit(true);
-  }
 }

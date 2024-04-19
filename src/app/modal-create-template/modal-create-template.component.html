@@ -1,0 +1,74 @@
+<div class="modal">
+  <div class="modal-content">
+    <form [formGroup]="form" (submit)="onSubmit()">
+      <div class="group">
+        <h1>CREATING TEMPLATE</h1>
+        <hr id="hr1">
+        <p>Optionally you can add variables, script, and CSS styling to your template</p>
+      </div>
+      <div class="group">
+        <h1>VARIABLES</h1>
+        <hr id="hr2">
+        <p>Add as many variables as needed</p>
+
+        <div formArrayName="variables" *ngFor="let variable of variables.controls; let i = index">
+          <div class="variable" [formGroupName]="i">
+            <label for="name">Variable name</label>
+            <input type="text" placeholder="Name" id="name" name="name" formControlName="name">
+
+            <label for="type">Type</label>
+            <select type="text" placeholder="" id="type" name="type" formControlName="type">
+              <option>string</option>
+              <option>int</option>
+              <option>double</option>
+            </select>
+
+            <label>Is required</label>
+            <input type="checkbox" formControlName="isRequired" name="isRequired">
+          </div>
+        </div>
+      </div>
+
+      <button class="button" (click)="addVariable()">+</button>
+      <div class="group">
+        <h1>SCRIPT</h1>
+        <hr id="hr3">
+        <p>Process in-variables in a way that you want</p>
+        <textarea id="js" name="js" rows="10" cols="10" formControlName="js" placeholder="Example:
+name = name.toUpper();"></textarea>
+      </div>
+
+      <div class="group">
+        <h1>STYLING</h1>
+        <hr id="hr5">
+        <p>Add beautiful styles for your template</p>
+        <textarea id="css" name="css" rows="10" cols="10" formControlName="css" placeholder="Example:
+h1 {
+font-weight: bold;
+}"></textarea>
+      </div>
+
+      <div class="group">
+        <h1>HTML</h1>
+        <hr id="hr4">
+        <p>Now write a core of your template - HTML. You can use styles and script variables which you defined
+          earlier</p>
+        <textarea id="html" name="html" rows="10" cols="10" formControlName="html" placeholder="Example:
+<h1>Hello, {name}!</h1>"></textarea>
+      </div>
+
+      <div class="group">
+        <h1>Image</h1>
+        <hr id="hr6">
+        <p>Finally, add the name and upload an example image for your template to make it recognizable and easy to find</p>
+        <input type="file" class="button" accept="image/*" (change)="onImageSelected($event)"/>
+        <input type="text" class="button" formControlName="name" placeholder="Template name"/>
+      </div>
+
+      <div class="btn">
+        <button type="button">CANCEL</button>
+        <button type="submit" id="btnSubmit">CREATE AND USE TEMPLATE</button>
+      </div>
+    </form>
+  </div>
+</div>

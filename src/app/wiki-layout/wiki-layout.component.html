@@ -1,44 +1,65 @@
-<div id="main" style="padding: 10px">
+<div id="main" style="padding: 10px" [style.background-image]="getBackgroundImage()">
   <div class="transparent">
     <div class="main-container">
-      <img src="assets/logo.jpg" alt="Wiki Logo" width="100" height="100">
+      <img [src]="wiki.logoImagePath" alt="Wiki Logo" width="100" height="100">
       <div class="center-container">
         <span class="wiki-title">{{ wiki.name }}</span>
         <div class="menu-items">
-          <a href="#" class="nav-link">EXPLORE</a>
-          <a href="#" class="nav-link">Main articles</a>
-          <a href="#" class="nav-link">Community</a>
-          <a href="#" class="nav-link">For contributors</a>
+          <div class="dropdown">
+            <a href="#" class="nav-link">EXPLORE</a>
+          </div>
+          <div class="dropdown">
+            <a href="#" class="nav-link" *ngIf="wiki.mainLinks">Main articles</a>
+            <div class="dropdown-content">
+              <a *ngFor="let link of wiki.mainLinks" [href]="link.url">{{link.title}}</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <a href="#" class="nav-link">Community</a>
+          </div>
+          <div class="dropdown">
+            <a href="#" class="nav-link">For contributors</a>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="right-container">
       <div class="page-counter">
-        <span class="page-count-number">{{ numberOfPages }}</span>
+        <span class="page-count-number">{{ wiki.numberOfPages }}</span>
         <span class="page-count-text">PAGES</span>
       </div>
 
       <div class="icon-group">
-        <button class="icon-button" aria-label="Search">
-          <fa-icon [icon]="faSearch"></fa-icon>
-        </button>
+        <div class="dropdown">
+          <a class="icon-button" *ngIf="homePageLink" [href]="homePageLink" aria-label="Home">
+            <fa-icon [icon]="faHome"></fa-icon>
+          </a>
+        </div>
         <div class="separator"></div>
-        <button class="icon-button" aria-label="Discuss">
-          <fa-icon [icon]="faComments"></fa-icon>
-        </button>
+        <div class="dropdown">
+          <button class="icon-button" (click)="openSettings()" aria-label="Settings">
+            <fa-icon [icon]="faGear"></fa-icon>
+          </button>
+        </div>
         <div class="separator"></div>
-        <button class="icon-button" aria-label="Recent changes">
-          <fa-icon [icon]="faChartLine"></fa-icon>
-        </button>
+        <div class="dropdown">
+          <a class="icon-button" *ngIf="contributorsPageLink" [href]="contributorsPageLink" aria-label="Contributors">
+            <fa-icon [icon]="faUserGroup"></fa-icon>
+          </a>
+        </div>
         <div class="separator"></div>
-        <button class="icon-button" aria-label="Light theme">
-          <fa-icon [icon]="faSun"></fa-icon>
-        </button>
-        <div class="separator"></div>
-        <button class="icon-button" aria-label="Actions">
-          <fa-icon [icon]="faEllipsisVertical"></fa-icon>
-        </button>
+        <div class="dropdown">
+          <button class="icon-button" aria-label="Actions">
+            <fa-icon [icon]="faEllipsisVertical"></fa-icon>
+          </button>
+
+          <div class="dropdown-content right">
+            <a href="wiki/{{wiki.id}}/createPage">Create new page</a>
+            <a *ngIf="currentPageId && currentPageId !== 0" href="/wiki/{{wiki.id}}/editPage/{{currentPageId}}">Edit current page</a>
+            <a *ngIf="currentPageId && currentPageId !== 0" href="/wiki/{{wiki.id}}/deletePage/{{currentPageId}}">Delete current page</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -1,0 +1,68 @@
+<div class="modal">
+  <div class="modal-content">
+    <form [formGroup]="form" (submit)="onSubmit()">
+      <div class="group">
+        <h1>EDITING WIKI</h1>
+        <hr id="hr1">
+        <p>Here you can edit your wiki</p>
+      </div>
+      <div class="group">
+        <h1>WIKI NAME</h1>
+        <hr id="hr2">
+        <input type="text" placeholder="Name" formControlName="name">
+      </div>
+      <div class="group">
+        <h1>BACKGROUND IMAGE</h1>
+        <hr id="hr3">
+        <input type="file" class="button" accept="image/*" (change)="onBackgroundSelected($event)"/>
+      </div>
+      <div class="group">
+        <h1>LOGO IMAGE</h1>
+        <hr id="hr4">
+        <input type="file" class="button" accept="image/*" (change)="onLogoSelected($event)"/>
+      </div>
+      <div class="group">
+        <h1>MAIN LINKS</h1>
+        <hr id="hr5">
+        <div formArrayName="mainLinks" *ngFor="let link of mainLinks.controls; let i = index">
+          <div class="link" [formGroupName]="i">
+            <label for="url">URL</label>
+            <input type="text" id="url" name="url" formControlName="url">
+
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" formControlName="title">
+
+            <button type="button" class="delete-button" (click)="mainLinks.removeAt(i)">
+              <fa-icon [icon]="faTrash"></fa-icon>
+            </button>
+          </div>
+        </div>
+        <button type="button" class="button" (click)="addMainLink()">+</button>
+      </div>
+      <div class="group">
+        <h1>CONTRIBUTORS</h1>
+        <hr id="hr6">
+        <div formArrayName="contributors" *ngFor="let contributor of contributors.controls; let i = index">
+          <div class="contributor" [formGroupName]="i">
+            <label for="userName">User name</label>
+            <input type="text" id="userName" name="userName" formControlName="userName">
+
+            <label for="contributorRoleId">Role</label>
+            <select id="contributorRoleId" name="contributorRoleId" formControlName="contributorRoleId">
+              <option *ngFor="let role of contributorRoles" [value]="role.id">{{role.name}}</option>
+            </select>
+
+            <button type="button" class="delete-button" (click)="contributors.removeAt(i)">
+              <fa-icon [icon]="faTrash"></fa-icon>
+            </button>
+          </div>
+        </div>
+        <button type="button" class="button" (click)="addContributor()">+</button>
+      </div>
+      <div class="btn">
+        <button type="button">CANCEL</button>
+        <button type="submit" id="btnSubmit">SAVE CHANGES</button>
+      </div>
+    </form>
+  </div>
+</div>

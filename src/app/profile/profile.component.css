@@ -1,0 +1,268 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+.profile__section {
+  width: 100%;
+  height: 100vh;
+  background: rgb(24, 21, 21);
+  padding: 40px 0;
+}
+.container {
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+}
+.profile__wrapper {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.profile__wrapper_header {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  justify-content: space-between;
+}
+.profile__header_user {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.profile__user_banner {
+}
+.profile__user_banner img {
+  height: 140px;
+}
+.profile__user_info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.profile__info_title {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.profile__title_nickname {
+  font-size: 26px;
+  font-weight: 600;
+  color: #fff;
+}
+.profile__title_role {
+  width: 100px;
+  background: green;
+  font-size: 14px;
+  padding: 4px 8px;
+  color: #fff;
+  font-weight: 400;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profile__info_actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.profile__actions_edits {
+  font-size: 14px;
+  font-weight: 600;
+  color: orange;
+}
+.profile__actions_circle {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: gray;
+}
+.profile__actions_posts {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+}
+.profile__info_about {
+}
+.profile__about_text {
+  font-size: 14px;
+  font-weight: 400;
+  color: #fff;
+}
+.profile__info_discord {
+}
+.profile__discord_icon {
+  height: 20px;
+}
+.profile__header_post {
+}
+.profile__post_button {
+  padding: 10px 24px;
+  background: rgb(3, 130, 3);
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  outline: none;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.profile__post_button:hover {
+  background: rgb(2, 78, 2);
+}
+.profile__wrapper_main {
+  width: 100%;
+  height: 50%;
+  margin-top: 40px;
+  flex: 1 1 auto;
+}
+.profile__main_tabs {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid gray;
+}
+.profile__tabs_item {
+  font-size: 16px;
+  font-weight: 600;
+  color: orange;
+  padding: 10px;
+  transition: 0.4s;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+}
+.profile__tabs_item:hover {
+  border-color: green;
+}
+.profile__tabs_item.active {
+  border-color: green;
+}
+.profile__main_source {
+  width: 100%;
+  padding: 20px 10px;
+  border-bottom: 1px solid gray;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+}
+.profile__source_message {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.profile__message_icon {
+  height: 16px;
+}
+.profile__message_text {
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 600;
+  color: green;
+}
+.profile__source_dash {
+  width: 2px;
+  height: 10px;
+  background: gray;
+}
+.profile__source_dots {
+  width: 14px;
+  height: 18px;
+}
+.profile__source_dots img {
+  height: 18px;
+}
+.profile__main_block {
+}
+.profile__wrapper_footer {
+  width: 100%;
+  height: 20%;
+}
+.profile__footer_text {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+}
+.profile__footer_primary {
+  font-size: 14px;
+  font-weight: 500;
+  color: green;
+}
+
+@media (max-width: 1220px) {
+  .profile__section {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 769px) {
+  .profile__header_user {
+    gap: 20px;
+  }
+
+  .profile__user_banner img {
+    height: 100px;
+  }
+  .profile__title_nickname {
+    font-size: 22px;
+  }
+  .profile__wrapper_header {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .profile__user_info {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 500px) {
+  .profile__section {
+    padding: 10px;
+  }
+  .profile__info_title {
+    align-items: start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .profile__tabs_item {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px;
+  }
+  .profile__post_button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+  .profile__footer_text {
+    width: 100%;
+    line-height: 22px;
+    text-align: center;
+  }
+  .profile__user_banner img {
+    height: 80px;
+  }
+}
+
+@media (max-width: 380px) {
+  .profile__section {
+    padding: 10px;
+  }
+  .profile__info_title {
+    align-items: start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .profile__tabs_item {
+    font-size: 14px;
+    font-weight: 400;
+    padding: 6px;
+  }
+}

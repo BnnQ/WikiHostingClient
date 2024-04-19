@@ -1,4 +1,4 @@
-<app-wiki-layout *ngIf="wiki" [wiki]="wiki" [numberOfPages]="numberOfPages">
+<app-wiki-layout *ngIf="wiki" [wiki]="wiki">
   <!-- Angular HTML -->
   <div class="container">
     <header>
@@ -29,8 +29,8 @@
         <div style="color: #e6e6e6; margin-bottom: 15px; font-size: 16px; font-weight: 600">Meet the Admins</div>
         <div class="admins-mods">
           <div *ngFor="let admin of admins" class="admin">
-            <img [src]="admin.avatarPath" alt="{{admin.username}}">
-            <div class="nickname">{{admin.username}}</div>
+            <img [src]="admin.avatarPath" alt="{{admin.userName}}">
+            <div class="nickname">{{admin.userName}}</div>
           </div>
         </div>
         <div style="color: #e6e6e6; margin-bottom: 15px; font-size: 14px; line-height: 1.75; margin-top: 12px">Ask us anything. We'd love to hear what brought you to this wiki</div>
