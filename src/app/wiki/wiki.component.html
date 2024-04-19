@@ -1,4 +1,4 @@
-<app-wiki-layout *ngIf="wiki" [wiki]="wiki" [numberOfPages]="numberOfPages">
+<app-wiki-layout *ngIf="wiki" [wiki]="wiki" [currentPageId]="pageId">
 <!--  <div style="background-color: red; width: 200px; height: 200px"></div>-->
-  <div *ngIf="page" [innerHtml]="page.processedHtml"></div>
+  <div *ngIf="page" [innerHtml]="getSafePageHtml()"></div>
 </app-wiki-layout>

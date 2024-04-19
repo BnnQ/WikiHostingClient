@@ -15,7 +15,6 @@ import {IUserRepository} from "../../services/abstractions/i-user-repository";
 export class WikiContributorsComponent implements OnInit {
   wikiId: number = 0;
   wiki?: Wiki;
-  numberOfPages: number = 0;
   admins : User[] = [];
 
   constructor(@Inject(SERVICE_IDENTIFIERS.IWikiRepository) private readonly wikiRepository: IWikiRepository, @Inject(SERVICE_IDENTIFIERS.IUserRepository) private readonly userRepository : IUserRepository, activatedRoute: ActivatedRoute) {
@@ -57,8 +56,7 @@ export class WikiContributorsComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.wiki = await this.wikiRepository.getWiki(this.wikiId);
-    //add fetching numberOfPages
-    this.numberOfPages = 1735;
+    this.wiki!.id = this.wikiId;
 
     const contributors = await this.wikiRepository.getWikiContributors(this.wikiId);
     contributors.forEach(contributor => {
