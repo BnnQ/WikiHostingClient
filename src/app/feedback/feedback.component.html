@@ -1,0 +1,7 @@
+<!-- feedback.component.html -->
+<div class="feedback-form">
+  <h1>Submit a feedback</h1>
+  <h3>What are you thinking about us today?</h3>
+  <textarea [(ngModel)]="feedback" rows="10" cols="50"></textarea>
+  <button style="margin-top: 15px" (click)="submitFeedback()" class="submit-button">Submit</button>
+</div>
