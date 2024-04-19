@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="card">
+    <form>
+      <div class="form-group">
+        <label class="main-form-label">Name your community</label>
+        <p class="form-description">Whether it's a community focused on world-wide entertainment sensation or a very personal project, it needs a good and unique name:</p>
+        <input class="form-input" type="text" [(ngModel)]="communityName" name="communityName" placeholder="Name of the wiki" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Select a topic</label>
+        <select class="form-input" *ngIf="topics" [(ngModel)]="topic" name="topic" required>
+          <option value="" disabled>Select a topic</option>
+          <option *ngFor="let topic of topics" [value]="topic.name">{{topic.name}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Choose a background image</label>
+        <input class="form-input" type="file" accept="image/*" (change)="onBackgroundImageSelected($event)" [(ngModel)]="backgroundImage" name="backgroundImage" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Choose a logo image</label>
+        <input class="form-input" type="file" accept="image/*" (change)="onLogoImageSelected($event)" [(ngModel)]="logoImage" name="logoImage" required>
+      </div>
+
+      <button class="form-button" type="submit" (click)="createWiki()">Create</button>
+    </form>
+  </div>
+</div>

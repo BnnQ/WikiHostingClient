@@ -1,0 +1,56 @@
+* {
+  color: #C3BEB6;
+  font-family: 'Roboto', sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #420036;
+}
+
+.card {
+  width: 80%;
+  height: 70%;
+  background-color: #181a1b;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.main-form-label {
+  font-size: 2em;
+}
+
+.form-label {
+  margin-right: 10px;
+}
+
+.form-description {
+  font-size: 1em;
+}
+
+.form-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid darkgray;
+  font-size: 16px;
+}
+
+.form-button {
+  background-color: #420036;
+  border: 1px solid #C3BEB6;
+  padding: 10px 20px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
