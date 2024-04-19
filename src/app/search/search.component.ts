@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable, map } from 'rxjs';
 
 @Component({
@@ -8,6 +9,7 @@ import { Observable, map } from 'rxjs';
   styleUrl: './search.component.css'
 })
 export class SearchComponent implements OnInit {
+  searchQuery: string = '';
   categories: string[] = [];
   selectedCategory: string | null = null;
   wikiName: string[] =[];
@@ -15,12 +17,18 @@ export class SearchComponent implements OnInit {
   search: string = "";
   WikisId :number[] = [];
   wikiDetails: any[] = []
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getCategories().subscribe(categories => {
       this.categories = categories;
     });
+
+    this.route.queryParams.subscribe(params => {
+      this.searchQuery = params['query'] || ''; 
+    });
+    // this.onSearchRoute(this.searchQuery);
+    this.onSearch({ target: { value: this.searchQuery } });
   }
 
   getCategories(): Observable<string[]> {
@@ -37,41 +45,66 @@ export class SearchComponent implements OnInit {
     }else{
       this.selectedCategory = category;
       console.log(this.selectedCategory);
+      this.onSearch({ target: { value: this.searchQuery } });
     }
   }
 
-  onSearch(event: any): void {
-    const query = event.target.value;
+  onSearchRoute(query: string): void {
     if (query.length >= 1) {
       let apiUrl = `https://localhost:7133/Wiki?search=${query}`;
       this.http.get<any[]>(apiUrl).subscribe(
-        (response) => {
-          this.wikiName = response.map(item => item.name); 
-          this.numbResult = this.wikiName.length;
-          this.search = query;
-          this.WikisId = response.map(item=>item.id);
-        },
-        (error) => {
-          console.error(error);
-        }
+          (response) => {
+              this.wikiDetails = response.map(item => {
+                  return {
+                      name: item.name,
+                      MainWikiImagePath: item.mainWikiImagePath
+                  };
+              }); 
+              this.numbResult = this.wikiDetails.length;
+              this.search = query;
+              this.WikisId = response.map(item=>item.id);
+              console.log(this.wikiDetails);
+          },
+          (error) => {
+              console.error(error);
+          }
       );
+  } else {
+      this.wikiDetails = [];
+  }
+  }
+
+  
+
+  onSearch(event: any): void {
+    
+    const query = event.target.value;
+    this.searchQuery = query;
+    if (query.length >= 1) {
+      let apiUrl = `https://localhost:7133/Wiki?search=${query}`;
+      if (this.selectedCategory!=null) {
+        apiUrl += `&topic=${this.selectedCategory}`;
+      }   
+        this.http.get<any[]>(apiUrl).subscribe(
+            (response) => {
+                this.wikiDetails = response.map(item => {
+                    return {
+                        name: item.name,
+                        MainWikiImagePath: item.mainWikiImagePath
+                    };
+                }); 
+                this.numbResult = this.wikiDetails.length;
+                this.search = query;
+                this.WikisId = response.map(item=>item.id);
+                console.log(this.wikiDetails);
+            },
+            (error) => {
+                console.error(error);
+            }
+        );
+        console.log(apiUrl);
     } else {
-      this.wikiName = [];
+        this.wikiDetails = [];
     }
-
-  }
-
-  getWikisDetails(){
-    this.WikisId.forEach(id=>{
-      const apiUrl=``;
-      this.http.get<any>(apiUrl).subscribe(
-        (response)=>{
-          this.wikiDetails.push({
-            id: response.id,
-            
-          })
-        }
-      )
-    })
-  }
+}
 }

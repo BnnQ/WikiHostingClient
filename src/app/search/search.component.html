@@ -21,7 +21,7 @@
         </div>
         <div>
             <p id="pResult">SEARCH RESULT</p>
-            <p id="pDescripion">About {{numbResult}} result for "{{search}}"</p>
+            <p id="pDescripion">About {{numbResult}} result for {{search}}</p>
         </div>
 
         <div class="categories">
@@ -33,9 +33,10 @@
         </div>
 
         
-            <div class="post" *ngFor="let i of wikiName">
-                <p>{{ i}}</p>
-            </div>
+        <div class="post" *ngFor="let item of wikiDetails">
+            <img [src]="item.MainWikiImagePath" alt="Wiki Image">
+            <p>{{ item.name }}</p>
+        </div>
         
     </div>
 
