@@ -1,0 +1,142 @@
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: linear-gradient(180deg, #170723 50%, #23033A 100%);
+  padding: 20px;
+  border-radius: 12px;
+  width: 60vw;
+  height: 80vh;
+  overflow: auto;
+}
+
+#hr1 {
+  border: 1px solid #DF622C;
+  width: 100%;
+}
+
+#hr2 {
+  border: 1px solid #DFC22C;
+  width: 100%;
+}
+
+#hr3 {
+  border: 1px solid #45DF2C;
+  width: 100%;
+}
+
+#hr4 {
+  border: 1px solid #3A2CDF;
+  width: 100%;
+}
+
+#hr5 {
+  border: 1px solid #2CDFD4;
+  width: 100%;
+}
+
+#hr6 {
+  border: 1px solid #c72cdf;
+  width: 100%;
+}
+
+.group {
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.group label {
+  color: #D9D9D9;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.group label,
+.group input {
+  display: inline-block;
+}
+
+.group label:first-of-type {
+  margin-right: 10px;
+}
+
+.group input, select {
+  width: 240px;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid #8B8B8B;
+  color: #D9D9D9;
+  background-color: #170723;
+}
+
+.group h1 {
+  font-weight: lighter;
+  color: #D9D9D9;
+  font-family: Kelly Slab;
+}
+
+.group p {
+  color: #D9D9D9;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.link,
+.contributor {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.button {
+  display: inline-block;
+  padding: 5px 10px;
+  border: #480577 1px solid;
+  border-radius: 10px;
+  background-color: transparent;
+  font-weight: bold;
+  font-size: 15px;
+  color: white;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.btn button {
+  width: 40%;
+  height: 30px;
+  margin: 30px;
+  background-color: #24033C;
+  color: #D9D9D9;
+  border: 1px solid #D9D9D9;
+  border-radius: 5px;
+}
+
+.btn button:hover {
+  background-color: #170723;
+}
+
+#btnSubmit:hover {
+  background: #3e176e;
+}
+
+#btnSubmit {
+  background: #4E1D89;
+}
+
+.delete-button {
+  background-color: transparent; /* light-red transparent background */
+  border: 1px solid rgba(255, 0, 0, 0.5); /* light-red border */
+  color: rgba(255, 0, 0, 0.5); /* light-red text (icon) color */
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.delete-button:hover {
+  background-color: rgba(255, 0, 0, 0.2);
+}
