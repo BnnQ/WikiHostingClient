@@ -1,0 +1,37 @@
+<div class="modal">
+  <div class="modal-content">
+    <form [formGroup]="form" (submit)="onSubmit()">
+      <div class="group">
+        <h1>USING TEMPLATE</h1>
+        <hr id="hr1">
+        <p>Fill in the variables for the template</p>
+      </div>
+      <div class="group">
+        <h1>VARIABLES</h1>
+        <hr id="hr2">
+        <p>Fill in the values for the variables</p>
+
+        <div formArrayName="variables" *ngFor="let variable of variables.controls; let i = index">
+          <div class="variable" [formGroupName]="i">
+            <label for="name">Variable name</label>
+            <input type="text" placeholder="Name" id="name" name="name" formControlName="name" readonly>
+
+            <label for="type">Type</label>
+            <input type="text" placeholder="Type" id="type" name="type" formControlName="type" readonly>
+
+            <label for="value">Value</label>
+            <input type="text" placeholder="Value" id="value" name="value" formControlName="value">
+
+            <label>Is required</label>
+            <input type="checkbox" formControlName="isRequired" name="isRequired" [disabled]="true">
+          </div>
+        </div>
+      </div>
+
+      <div class="btn">
+        <button type="button">CANCEL</button>
+        <button type="submit" id="btnSubmit">USE TEMPLATE</button>
+      </div>
+    </form>
+  </div>
+</div>
