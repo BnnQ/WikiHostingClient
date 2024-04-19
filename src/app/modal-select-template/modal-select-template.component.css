@@ -1,66 +1,62 @@
-*{
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+* {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
-.modal{
-    height: 100vh;
-    width: 100vw;
-    background-color: rgba(0,0,0,0.4);
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .templates {
-    margin: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  margin: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .template-container {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .template {
-    width: 20%;
-    height: 200px;
-    margin: 20px;
-    background: linear-gradient(180deg, #090909 0%, #3C0D62 100%);
-    color: white;
-    border: 1px solid #000000;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+  width: 20%;
+  height: 200px;
+  margin: 20px;
+  background: linear-gradient(180deg, #090909 0%, #3C0D62 100%);
+  color: white;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
 }
-
 
 
 .template-box div {
-    font-size: 18px;
-    font-weight: bold;
+  font-size: 18px;
+  font-weight: bold;
 }
 
-.modal-content{
-    background: linear-gradient(180deg, #170723 50%, #23033A 100%);
-    padding: 20px;
-    border-radius: 12px;
-    width: 60vw;
-    height: 80vh;
-    overflow: auto;
+.modal-content {
+  background: linear-gradient(180deg, #170723 50%, #23033A 100%);
+  padding: 20px;
+  border-radius: 12px;
+  width: 60vw;
+  height: 80vh;
+  overflow: auto;
 }
-form input{
-    width: 100%;
-    height: 30px;
-    border-radius: 12px;
-    border: 0;
-    padding: 5px;
-    font-size: 20px;
+
+form input {
+  width: 100%;
+  height: 30px;
+  border-radius: 12px;
+  border: 0;
+  padding: 5px;
+  font-size: 20px;
 }
 
