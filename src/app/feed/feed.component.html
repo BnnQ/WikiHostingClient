@@ -3,14 +3,14 @@
     <div *ngFor="let page of pages" class="card">
       <div class="card-header">
         <div class="author-info">
-          <img [src]="page.author.avatarPath" alt="{{page.author.username}}" class="author-avatar">
-          <div class="author-nickname">{{page.author.username}}</div>
+          <img [src]="page.author.avatarPath" alt="{{page.author.userName}}" class="author-avatar">
+          <div class="author-nickname">{{page.author.userName}}</div>
         </div>
         <div class="date">{{page.createdAt | date}}</div>
       </div>
       <div class="card-body">
         <h5 class="card-title">{{page.title}}</h5>
-        <img [src]="page.imagePath" alt="{{page.title}}" class="article-image">
+        <img *ngIf="page.imagePath !== 'No image'" [src]="page.imagePath" alt="{{page.title}}" class="article-image">
       </div>
       <div class="card-footer">
         <div class="icon-group">
