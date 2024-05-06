@@ -1,6 +1,8 @@
 import {UserUpsertDto} from "../models/dto/user-upsert-dto";
 import {User} from "../models/user";
 import {IUserRepository} from "./abstractions/i-user-repository";
+import {resolve} from "@angular/compiler-cli";
+import {model} from "@angular/core";
 
 export class StubUserRepository implements IUserRepository {
 
@@ -41,6 +43,10 @@ export class StubUserRepository implements IUserRepository {
         reject(new Error('User not found'));
       }
     });
+  }
+
+  getCurrentUserId(): Promise<number> {
+    return Promise.resolve(1);
   }
 
 }

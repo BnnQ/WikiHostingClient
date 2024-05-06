@@ -18,6 +18,10 @@ export class ApiUserRepository implements IUserRepository {
     return this.httpService.get<User>(new URL(`${this.serverApiUrl}/api/users/profile/${id ? id : ''}`));
   }
 
+  getCurrentUserId(): Promise<number> {
+    return this.httpService.get<number>(new URL(`${this.serverApiUrl}/api/users/getMyId`));
+  }
+
   registerUser(model: UserUpsertDto): Promise<User> {
     return this.httpService.post<User>(new URL(`${this.serverApiUrl}/api/users`), model);
   }

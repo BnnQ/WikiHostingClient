@@ -1,1 +1,17 @@
-<router-outlet />
+<div class="app-container">
+  <div class="menu">
+    <a href="/"><img src="assets/images/gamepad.png"></a>
+    <a *ngIf="selfId && selfId !== 0" href="/profile/{{selfId}}"><img src="assets/images/profile.png"></a>
+    <a href="#"><img src="assets/images/notification.png"></a>
+    <a href="/createWiki"><img src="assets/images/wiki.png"></a>
+
+    <a href="/search?category=Games&query=" id="games"><img src="assets/images/Games.svg"></a>
+    <a href="/search?category=Anime&query="><img src="assets/images/anime.svg"></a>
+    <a href="/search?category=Movies&query="><img src="assets/images/Movies.svg"></a>
+    <a href="/search?category=Video&query="><img src="assets/images/video.png"></a>
+
+  </div>
+  <div class="content">
+    <router-outlet />
+  </div>
+</div>

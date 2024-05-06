@@ -30,7 +30,7 @@ export class LoginComponent {
   this.http.post<any>('https://localhost:7133/api/Users/auth', credentials,httpOptions).subscribe(
     (response)=>{
       console.log('Login successful',response);
-      this.router.navigate(['/']);
+      this.router.navigate(['/search']);
       sessionStorage.setItem('currentUser', JSON.stringify(response));
     },
     (error)=>{

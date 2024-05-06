@@ -42,8 +42,8 @@ export class CreateWikiComponent implements OnInit {
       return;
 
     const backgroundImagePath = await this.mediaRepository.uploadImage(this.backgroundImage);
-    const logoImagePath = await this.mediaRepository.uploadImage(this.logoImage);
-    const wiki = new WikiUpsertDto(this.communityName, backgroundImagePath, logoImagePath, [], this.topic);
+    const mainWikiImagePath = await this.mediaRepository.uploadImage(this.logoImage);
+    const wiki = new WikiUpsertDto(this.communityName, backgroundImagePath, mainWikiImagePath, [], this.topic);
 
     console.log('wiki', wiki);
     const createdWiki = await this.wikiRepository.createWiki(wiki);

@@ -1,95 +1,84 @@
 <body>
-    <div class="main">
+<div class="main">
 
-        <div class="menu">
-            <a href="/"><img src="assets/images/gamepad.png"></a>
-            <a href="/profile"><img src="assets/images/profile.png"></a>
-            <a href="#"><img src="assets/images/notification.png"></a>
-            <a href="#"><img src="assets/images/wiki.png"></a>
+  <div class="search">
+    <input type="text" placeholder="Search" (input)="onSearch($event)">
+  </div>
+  <div>
+    <a id="logout" href="#"><img src="assets/images/logout.png"></a>
+  </div>
+  <div>
+    <p id="pResult">SEARCH RESULT</p>
+    <p id="pDescripion">About {{numbResult}} result for {{search}}</p>
+  </div>
 
-            <a href="#" id="games"><img src="assets/images/Games.svg"></a>
-            <a href="#"><img src="assets/images/anime.svg"></a>
-            <a href="#"><img src="assets/images/Movies.svg"></a>
-            <a href="#"><img src="assets/images/video.png"></a>
+  <div class="categories">
+    <button [ngClass]="{'active': selectedCategory === null}" (click)="onCategorySelected(null)">ALL</button>
+    <button *ngFor="let category of categories" [ngClass]="{'active': selectedCategory === category}"
+            (click)="onCategorySelected(category)">
+      {{ category }}
+    </button>
+  </div>
 
-        </div>
-        <div class="search">
-            <input type="text" placeholder="Search" (input)="onSearch($event)">
-        </div>
-        <div>
-            <a id="logout" href="#"><img src="assets/images/logout.png"></a>
-        </div>
-        <div>
-            <p id="pResult">SEARCH RESULT</p>
-            <p id="pDescripion">About {{numbResult}} result for "{{search}}"</p>
-        </div>
 
-        <div class="categories">
-            <button [ngClass]="{'active': selectedCategory === null}" (click)="onCategorySelected(null)">ALL</button>
-            <button *ngFor="let category of categories" [ngClass]="{'active': selectedCategory === category}"
-                (click)="onCategorySelected(category)">
-                {{ category }}
-            </button>
-        </div>
+  <a *ngFor="let item of wikiDetails" href="/wiki/{{item.id}}" class="post">
+    <img [src]="item.MainWikiImagePath" alt="Wiki Image">
+    <p>{{ item.name }}</p>
+  </a>
 
-        
-            <div class="post" *ngFor="let i of wikiName">
-                <p>{{ i}}</p>
-            </div>
-        
+</div>
+
+
+<footer class="main-footer">
+  <div class="footer-section">
+    <img src="assets/images/LOGO.png">
+  </div>
+  <div class="footer-section">
+    <p>Overview</p>
+    <div class="info">
+      <a href="#">Support</a>
+      <a href="#">Contacts Us About Advertise</a>
+      <a href="#">FAQs</a>
+      <a href="#">Privacy and Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Do Not Sell or Share My</a>
+      <a href="#">Personal Information</a>
+    </div>
+  </div>
+  <div class="footer-section">
+    <p>Community</p>
+    <div class="info">
+      <a href="#">What is "WikiHosting"?</a>
+      <a href="#">About Us</a>
+      <a href="#">Contacts</a>
+      <a href="#">Media Kit(Merch)</a>
     </div>
 
 
-    <footer class="main-footer">
-        <div class="footer-section">
-            <img src="assets/images/LOGO.png">
-        </div>
-        <div class="footer-section">
-            <p>LALALA</p>
-            <div class="info">
-                <a href="#">Support</a>
-                <a href="#">Contacts Us About Advertise</a>
-                <a href="#">FAQs</a>
-                <a href="#">Privacy and Policy</a>
-                <a href="#">Terms of Use</a>
-                <a href="#">Do Not Sell or Share My</a>
-                <a href="#">Personal Information</a>
-            </div>
-        </div>
-        <div class="footer-section">
-            <p>LALALA</p>
-            <div class="info">
-                <a href="#">What is "Name"?</a>
-                <a href="#">About Us</a>
-                <a href="#">Contacts</a>
-                <a href="#">Media Kit(Merch)</a>
-            </div>
+  </div>
+  <div class="footer-section">
+    <p>GAMEPEDIA APPS</p>
+    <div class="container">
+
+      <div id="image">
+        <img src="assets/images/gamepad.png">
+      </div>
+      <div class="images">
+        <img src="assets/images/gplay.png">
+        <br>
+        <img src="assets/images/appstore.png">
+      </div>
+    </div>
+    <p>FOLLOW US</p>
+    <div class="socialLinks">
+      <a href="#"><img src="assets/images/facebook2.png"></a>
+      <a href="#"><img src="assets/images/twitter.png"></a>
+      <a href="#"><img src="assets/images/youtube.png"></a>
+      <a href="#"><img src="assets/images/inst.png"></a>
+      <a href="#"><img src="assets/images/in.png"></a>
+    </div>
 
 
-        </div>
-        <div class="footer-section">
-            <p>GAMEPEDIA APPS</p>
-            <div class="container">
-
-                <div id="image">
-                    <img src="assets/images/gamepad.png">
-                </div>
-                <div class="images">
-                    <img src="assets/images/gplay.png">
-                    <br>
-                    <img src="assets/images/appstore.png">
-                </div>
-            </div>
-            <p>FOLLOW US</p>
-            <div class="socialLinks">
-                <a href="#"><img src="assets/images/facebook2.png"></a>
-                <a href="#"><img src="assets/images/twitter.png"></a>
-                <a href="#"><img src="assets/images/youtube.png"></a>
-                <a href="#"><img src="assets/images/inst.png"></a>
-                <a href="#"><img src="assets/images/in.png"></a>
-            </div>
-
-
-        </div>
-    </footer>
+  </div>
+</footer>
 </body>

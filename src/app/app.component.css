@@ -1,0 +1,26 @@
+.app-container {
+  display: flex;
+}
+
+.menu {
+  width: 80px;
+  height: auto;
+  background-color: #1E0338;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu img {
+  margin: 10px;
+  width: 45px;
+  height: auto;
+}
+
+#games{
+  margin-top: 40px;
+}
+
+.content {
+  flex: 1;
+}
