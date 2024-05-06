@@ -25,7 +25,8 @@ export class SearchComponent implements OnInit {
     });
 
     this.route.queryParams.subscribe(params => {
-      this.searchQuery = params['query'] || ''; 
+      this.searchQuery = params['query'] || '';
+      this.selectedCategory = params['category'] || '';
     });
     // this.onSearchRoute(this.searchQuery);
     this.onSearch({ target: { value: this.searchQuery } });
@@ -33,10 +34,10 @@ export class SearchComponent implements OnInit {
 
   getCategories(): Observable<string[]> {
     const apiUrl = 'https://localhost:7133/Topic';
-  return this.http.get<{ name: string }[]>(apiUrl)
-    .pipe(
-      map(categories => categories.map(category => category.name))
-    );
+    return this.http.get<{ name: string }[]>(apiUrl)
+      .pipe(
+        map(categories => categories.map(category => category.name))
+      );
   }
 
   onCategorySelected(category: string | null): void {
@@ -53,58 +54,59 @@ export class SearchComponent implements OnInit {
     if (query.length >= 1) {
       let apiUrl = `https://localhost:7133/Wiki?search=${query}`;
       this.http.get<any[]>(apiUrl).subscribe(
-          (response) => {
-              this.wikiDetails = response.map(item => {
-                  return {
-                      name: item.name,
-                      MainWikiImagePath: item.mainWikiImagePath
-                  };
-              }); 
-              this.numbResult = this.wikiDetails.length;
-              this.search = query;
-              this.WikisId = response.map(item=>item.id);
-              console.log(this.wikiDetails);
-          },
-          (error) => {
-              console.error(error);
-          }
+        (response) => {
+          this.wikiDetails = response.map(item => {
+            return {
+              id: item.id,
+              name: item.name,
+              MainWikiImagePath: item.MainWikiImagePath
+            };
+          });
+          this.numbResult = this.wikiDetails.length;
+          this.search = query;
+          this.WikisId = response.map(item=>item.id);
+          console.log(this.wikiDetails);
+        },
+        (error) => {
+          console.error(error);
+        }
       );
-  } else {
+    } else {
       this.wikiDetails = [];
-  }
+    }
   }
 
-  
+
 
   onSearch(event: any): void {
-    
     const query = event.target.value;
     this.searchQuery = query;
+    let apiUrl = `https://localhost:7133/Wiki`;
     if (query.length >= 1) {
-      let apiUrl = `https://localhost:7133/Wiki?search=${query}`;
-      if (this.selectedCategory!=null) {
-        apiUrl += `&topic=${this.selectedCategory}`;
-      }   
-        this.http.get<any[]>(apiUrl).subscribe(
-            (response) => {
-                this.wikiDetails = response.map(item => {
-                    return {
-                        name: item.name,
-                        MainWikiImagePath: item.mainWikiImagePath
-                    };
-                }); 
-                this.numbResult = this.wikiDetails.length;
-                this.search = query;
-                this.WikisId = response.map(item=>item.id);
-                console.log(this.wikiDetails);
-            },
-            (error) => {
-                console.error(error);
-            }
-        );
-        console.log(apiUrl);
-    } else {
-        this.wikiDetails = [];
+      apiUrl += `?search=${query}`;
     }
-}
+    if (this.selectedCategory != null) {
+      apiUrl += query.length >= 1 ? `&topic=${this.selectedCategory}` : `?topic=${this.selectedCategory}`;
+    }
+    this.http.get<any[]>(apiUrl).subscribe(
+      (response) => {
+        this.wikiDetails = response.map(item => {
+          return {
+            id: item.id,
+            name: item.name,
+            MainWikiImagePath: item.mainWikiImagePath
+          };
+        });
+        this.numbResult = this.wikiDetails.length;
+        this.search = query;
+        this.WikisId = response.map(item=>item.id);
+        console.log(this.wikiDetails);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+    console.log(apiUrl);
+  }
+
 }

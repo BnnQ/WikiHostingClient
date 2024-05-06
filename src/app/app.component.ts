@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {SERVICE_IDENTIFIERS} from "./app.module";
 import {INotificationService} from "../services/abstractions/i-notification-service";
+import {IUserRepository} from "../services/abstractions/i-user-repository";
 
 @Component({
   selector: 'app-root',
@@ -10,11 +11,13 @@ import {INotificationService} from "../services/abstractions/i-notification-serv
 export class AppComponent implements OnInit {
   title = 'WikiHostingClient';
   signalConnectionId : string = '';
+  selfId : number = 0;
 
-  constructor(@Inject(SERVICE_IDENTIFIERS.INotificationService) private readonly notificationService: INotificationService) {
+  constructor(@Inject(SERVICE_IDENTIFIERS.INotificationService) private readonly notificationService: INotificationService, @Inject(SERVICE_IDENTIFIERS.IUserRepository) private readonly userRepository : IUserRepository) {
   }
 
   async ngOnInit(): Promise<void> {
         this.signalConnectionId = await this.notificationService.getSelfConnectionId();
+        this.selfId = await this.userRepository.getCurrentUserId();
     }
 }

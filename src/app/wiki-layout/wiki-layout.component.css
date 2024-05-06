@@ -122,3 +122,12 @@
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+
+#content {
+  min-height: 100vh;
+  background-color: #18181f;
+  border-radius: 5px;
+  box-shadow: green 0px 0px 10px;
+  padding: 10px;
+}
