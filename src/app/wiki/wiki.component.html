@@ -1,4 +1,13 @@
 <app-wiki-layout *ngIf="wiki" [wiki]="wiki" [currentPageId]="pageId">
-<!--  <div style="background-color: red; width: 200px; height: 200px"></div>-->
-  <div *ngIf="page" [innerHtml]="getSafePageHtml()"></div>
+  <div style="position: relative;"> <!-- Adding relative positioning for proper button placement -->
+    <button class="report-button">Report</button>
+    <div class="report-menu">
+      <div class="menu-item" onclick="reportPost('Spam')">Spam</div>
+      <div class="menu-item" onclick="reportPost('Harassment')">Harassment</div>
+      <div class="menu-item" onclick="reportPost('Misinformation')">Misinformation</div>
+      <div class="menu-item" onclick="reportPost('Offensive Content')">Offensive Content</div>
+      <div class="menu-item" onclick="reportPost('Other')">Other</div>
+    </div>
+    <div *ngIf="page" [innerHtml]="getSafePageHtml()"></div>
+  </div>
 </app-wiki-layout>

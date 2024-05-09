@@ -1,22 +1,16 @@
 import {
-  AfterViewInit, ChangeDetectorRef,
   Component,
   ElementRef,
   EventEmitter,
   Inject,
   Input,
   OnInit,
-  Output,
-  ViewChild
+  Output, ViewChild
 } from '@angular/core';
 import {
-  faBold, faDroplet, faEraser, faImage,
-  faItalic, faLink, faListOl,
-  faListUl, faPuzzlePiece, faQuoteRight,
-  faRedo,
-  faStrikethrough,
-  faUnderline,
-  faUndo
+  faBold, faDroplet, faEraser, faExchangeAlt, faImage,
+  faItalic, faLink, faPuzzlePiece, faQuoteRight,
+  faStrikethrough, faUnderline, faArrowRightToBracket
 } from "@fortawesome/free-solid-svg-icons";
 import {ModalService} from "ngx-modal-ease";
 import {IMediaRepository} from "../../services/abstractions/i-media-repository";
@@ -33,11 +27,14 @@ import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
 })
 export class TextEditorComponent implements OnInit {
   @ViewChild('editable', {static: false}) editable!: ElementRef;
+  @ViewChild('textArea', {static: false}) textArea!: ElementRef;
   @Input() initialEditorContent: string = '';
   @Output() contentResult = new EventEmitter<string>();
+  isHtmlMode: boolean = false;
   initialEditorHtml? : SafeHtml;
+  editorContent? : SafeHtml;
 
-  constructor(private readonly modalService: ModalService, private readonly sanitizer : DomSanitizer, private readonly cdr : ChangeDetectorRef, @Inject(SERVICE_IDENTIFIERS.IMediaRepository) private readonly mediaRepository: IMediaRepository) {
+  constructor(private readonly modalService: ModalService, protected readonly sanitizer : DomSanitizer, @Inject(SERVICE_IDENTIFIERS.IMediaRepository) private readonly mediaRepository: IMediaRepository) {
   }
 
   async fakeDelay(ms: number) {
@@ -53,14 +50,25 @@ export class TextEditorComponent implements OnInit {
       this.initialEditorHtml = this.sanitizer.bypassSecurityTrustHtml('<div><span style="color: white">Your page starts here...</span></div>');
     else
       this.initialEditorHtml = this.sanitizer.bypassSecurityTrustHtml(this.initialEditorContent);
+
+    this.editorContent = this.initialEditorHtml;
   }
 
-  getInitialEditorContent() {
-    if (!this.initialEditorContent || this.initialEditorContent === '')
-      return '<div>Your page starts here...</div>';
-    else
-      return this.sanitizer.bypassSecurityTrustHtml(this.initialEditorContent);
+  switchMode() {
+    this.isHtmlMode = !this.isHtmlMode;
+
+    if (!this.isHtmlMode) {
+      this.editorContent = this.sanitizer.bypassSecurityTrustHtml(this.textArea.nativeElement.value);
+    } else {
+      this.editorContent = this.sanitizer.bypassSecurityTrustHtml(this.editable.nativeElement.innerHTML);
+    }
   }
+
+  updateEditorContent(event: Event) {
+    const target = event.target as HTMLInputElement;
+    this.editorContent = this.sanitizer.bypassSecurityTrustHtml(target.value);
+  }
+
 
   cancel() {
     this.contentResult.emit();
@@ -299,6 +307,10 @@ export class TextEditorComponent implements OnInit {
     }
   }
 
+  exitCurrentElement() {
+    this.appendHtmlToElement("<div>‎</div>");
+  }
+
   openTemplateMenu() {
     this.modalService.open(ModalSelectTemplateComponent).subscribe(templateData => {
       if (!templateData) {
@@ -331,7 +343,6 @@ export class TextEditorComponent implements OnInit {
     this.editable.nativeElement.appendChild(wrapper);
   }
 
-
   protected readonly faBold = faBold;
   protected readonly faItalic = faItalic;
   protected readonly faUnderline = faUnderline;
@@ -343,4 +354,6 @@ export class TextEditorComponent implements OnInit {
   protected readonly faEraser = faEraser;
 
   protected readonly faDroplet = faDroplet;
+  protected readonly faExchangeAlt = faExchangeAlt;
+  protected readonly faArrowRightToBracket = faArrowRightToBracket;
 }

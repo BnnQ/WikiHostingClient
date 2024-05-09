@@ -21,6 +21,13 @@ export class ApiPageRepository implements IPageRepository {
   getWikiPage(wikiId: number, pageId: number): Promise<Page> {
         return this.httpService.get<Page>(new URL(`${this.serverApiUrl}/page/${pageId}`));
     }
+
+  getWikiPageByTitle(wikiTitle: string, pageTitle: string): Promise<Page> {
+    wikiTitle = encodeURIComponent(wikiTitle);
+    pageTitle = encodeURIComponent(pageTitle);
+    return this.httpService.get<Page>(new URL(`${this.serverApiUrl}/page/${wikiTitle}/${pageTitle}`));
+  }
+
     getMainWikiPage(wikiId: number): Promise<Page> {
     return this.httpService.get<Page>(new URL(`${this.serverApiUrl}/page/getMainWikiPage/${wikiId}`));
     }
@@ -28,7 +35,8 @@ export class ApiPageRepository implements IPageRepository {
     getPage(id: number): Promise<Page> {
         return this.httpService.get<Page>(new URL(`${this.serverApiUrl}/page/${id}`));
     }
-    createPage(wikiId: number, model: PageUpsertDto): Promise<Page> {
+
+  createPage(wikiId: number, model: PageUpsertDto): Promise<Page> {
         return this.httpService.post<Page>(new URL(`${this.serverApiUrl}/page`), model, {wikiId: wikiId});
     }
     editPage(id: number, model: PageUpsertDto): Promise<Page> {

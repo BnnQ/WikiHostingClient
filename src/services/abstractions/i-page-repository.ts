@@ -6,6 +6,7 @@ export interface IPageRepository {
   getPopularPages(limit: number) : Promise<PageFeedDto[]>;
   getPage(id : number) : Promise<Page>;
   getWikiPage(wikiId : number, pageId : number) : Promise<Page>;
+  getWikiPageByTitle(wikiTitle: string, pageTitle : string) : Promise<Page>;
   getMainWikiPage(wikiId : number) : Promise<Page>;
   createPage(wikiId : number, model : PageUpsertDto) : Promise<Page>;
   editPage(id : number, model : PageUpsertDto) : Promise<Page>;

@@ -24,3 +24,138 @@
 .content {
   flex: 1;
 }
+
+.main-header {
+  background: #2B0054;
+  color: #fff;
+  display: flex;
+  height: 66px;
+  align-items: center;
+}
+
+.logo {
+  margin-left: 20px;
+}
+
+.logo img {
+  width: 214px;
+  height: auto;
+}
+
+.main-nav {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav ul li {
+  margin-right: 20px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.main-nav ul li:last-child {
+  margin-right: 0;
+}
+
+.main-nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.additional-links {
+  margin-left: auto;
+  margin-right: 50px;
+}
+
+.additional-links ul {
+  list-style: none;
+  display: flex;
+}
+
+.additional-links ul li {
+  margin-left: 50px;
+}
+
+.additional-links img {
+  height: 30px;
+}
+
+.additional-links ul li:first-child {
+  margin-left: 0;
+}
+
+.main-footer {
+  background: #2B0054;
+  height: 500px;
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+}
+.footer-section p{
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.info a{
+  color: white;
+  text-decoration: none;
+  margin-bottom: 10px;
+  display: block;
+}
+.socialLinks a{
+  margin-right: 10px;
+}
+
+
+.footer-section {
+  flex: 1;
+  background-color: #2B0054;
+  color: white;
+  padding: 20px;
+  margin: 20px;
+}
+
+#image{
+  height: 100px;
+  width: 100px;
+  background: linear-gradient(180deg, #9BCDEE 0%, #617D8D 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+#image img{
+  width: 78px;
+  height: 69px;
+}
+
+.images {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+.container {
+  display: flex;
+}
+.errMsg{
+  color: white;
+  font-size: 14px;
+  background-color: rgb(230, 82, 82);
+  border-radius: 5px;
+  border: 1px solid rgb(197, 58, 58);;
+  margin: 10px;
+  padding: 10px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+

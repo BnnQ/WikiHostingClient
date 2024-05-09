@@ -1,17 +1,92 @@
-<div class="app-container">
-  <div class="menu">
-    <a href="/"><img src="assets/images/gamepad.png"></a>
-    <a *ngIf="selfId && selfId !== 0" href="/profile/{{selfId}}"><img src="assets/images/profile.png"></a>
-    <a href="#"><img src="assets/images/notification.png"></a>
-    <a href="/createWiki"><img src="assets/images/wiki.png"></a>
-
-    <a href="/search?category=Games&query=" id="games"><img src="assets/images/Games.svg"></a>
-    <a href="/search?category=Anime&query="><img src="assets/images/anime.svg"></a>
-    <a href="/search?category=Movies&query="><img src="assets/images/Movies.svg"></a>
-    <a href="/search?category=Video&query="><img src="assets/images/video.png"></a>
-
+<header class="main-header">
+  <a href="/" class="logo">
+    <img src="assets/images/LOGO.png" alt="logo">
+  </a>
+  <nav class="main-nav">
+    <ul>
+      <li><a href="/search?category=Games&query=">Games</a></li>
+      <li><a href="/search?category=Anime&query=">Anime</a></li>
+      <li><a href="/search?category=Movies&query=">Movies</a></li>
+      <li><a href="/search?category=TV&query=">TV</a></li>
+      <li><a href="/search?category=Video&query=">Video</a></li>
+      <li><a href="/search">Wikis</a></li>
+    </ul>
+  </nav>
+  <div class="additional-links">
+    <ul>
+      <li><a *ngIf="selfId && selfId !== 0" href="/profile/{{selfId}}"><img src="assets/images/profile.png" alt="profile"></a></li>
+      <li><a href="search"><img src="assets/images/search.png" alt="search"></a></li>
+      <li><a href="/createWiki"><img src="assets/images/wiki.png" alt="wiki"></a></li>
+      <li><a *ngIf="selfId && selfId !== 0" (click)="logout()" style="cursor: pointer"><img src="assets/images/logout.png" alt="logout"></a></li>
+    </ul>
   </div>
+</header>
+<div class="app-container">
+    <div class="menu">
+      <a *ngIf="selfId && selfId !== 0" href="/profile/{{selfId}}"><img src="assets/images/profile.png"></a>
+      <a href="#"><img src="assets/images/notification.png"></a>
+      <a href="/createWiki"><img src="assets/images/wiki.png"></a>
+
+      <a href="/search?category=Games&query=" id="games"><img src="assets/images/Games.svg"></a>
+      <a href="/search?category=Anime&query="><img src="assets/images/anime.svg"></a>
+      <a href="/search?category=Movies&query="><img src="assets/images/Movies.svg"></a>
+      <a href="/search?category=Video&query="><img src="assets/images/video.png"></a>
+    </div>
+
   <div class="content">
     <router-outlet />
   </div>
 </div>
+<footer class="main-footer">
+  <div class="footer-section">
+    <img src="assets/images/LOGO.png">
+  </div>
+  <div class="footer-section">
+    <p>OVERVIEW</p>
+    <div class="info">
+      <a href="#">Support</a>
+      <a href="#">Contacts Us About Advertise</a>
+      <a href="#">FAQs</a>
+      <a href="#">Privacy and Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Do Not Sell or Share My</a>
+      <a href="#">Personal Information</a>
+      <a href="/pricing">Pricing</a>
+    </div>
+  </div>
+  <div class="footer-section">
+    <p>ADVERTISE</p>
+    <div class="info">
+      <a href="#">What is Gamepedia?</a>
+      <a href="#">About Us</a>
+      <a href="#">Contacts</a>
+      <a href="#">Media Kit</a>
+    </div>
+
+
+  </div>
+  <div class="footer-section">
+    <p>GAMEPEDIA APPS</p>
+    <div class="container">
+
+      <div id="image">
+        <img src="assets/images/gamepad.png">
+      </div>
+      <div class="images">
+        <img src="assets/images/gplay.png">
+        <br>
+        <img src="assets/images/appstore.png">
+      </div>
+    </div>
+    <p>FOLLOW US</p>
+    <div class="socialLinks">
+      <a href="#"><img src="assets/images/facebook2.png"></a>
+      <a href="#"><img src="assets/images/twitter.png"></a>
+      <a href="#"><img src="assets/images/youtube.png"></a>
+      <a href="#"><img src="assets/images/inst.png"></a>
+      <a href="#"><img src="assets/images/in.png"></a>
+    </div>
+
+
+  </div>
+</footer>

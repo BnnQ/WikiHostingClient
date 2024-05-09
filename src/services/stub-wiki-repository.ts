@@ -39,7 +39,12 @@ export class StubWikiRepository implements IWikiRepository {
     getWiki(id: number): Promise<Wiki | undefined> {
     return Promise.resolve(this.wikis.find(wiki => wiki.id === id));
     }
-    updateWiki(id: number, model: WikiUpsertDto): Promise<Wiki> {
+
+    getWikiByTitle(title: string): Promise<Wiki | undefined> {
+    return Promise.resolve(this.wikis.find(wiki => wiki.name === title));
+    }
+
+  updateWiki(id: number, model: WikiUpsertDto): Promise<Wiki> {
     const wiki = this.wikis.find(wiki => wiki.id === id);
 
     if (!wiki) {

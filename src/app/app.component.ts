@@ -10,14 +10,19 @@ import {IUserRepository} from "../services/abstractions/i-user-repository";
 })
 export class AppComponent implements OnInit {
   title = 'WikiHostingClient';
-  signalConnectionId : string = '';
-  selfId : number = 0;
+  signalConnectionId: string = '';
+  selfId: number = 0;
 
-  constructor(@Inject(SERVICE_IDENTIFIERS.INotificationService) private readonly notificationService: INotificationService, @Inject(SERVICE_IDENTIFIERS.IUserRepository) private readonly userRepository : IUserRepository) {
+  constructor(@Inject(SERVICE_IDENTIFIERS.INotificationService) private readonly notificationService: INotificationService, @Inject(SERVICE_IDENTIFIERS.IUserRepository) private readonly userRepository: IUserRepository) {
   }
 
   async ngOnInit(): Promise<void> {
-        this.signalConnectionId = await this.notificationService.getSelfConnectionId();
-        this.selfId = await this.userRepository.getCurrentUserId();
-    }
+    this.signalConnectionId = await this.notificationService.getSelfConnectionId();
+    this.selfId = await this.userRepository.getCurrentUserId();
+  }
+
+  logout() {
+    sessionStorage.removeItem('currentUser');
+    location.reload();
+  }
 }

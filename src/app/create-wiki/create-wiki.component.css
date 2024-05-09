@@ -8,7 +8,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #420036;
+  background-color: #170723;
 }
 
 .card {
@@ -42,7 +42,7 @@
 }
 
 .form-button {
-  background-color: #420036;
+  background-color: #2b0d3f;
   border: 1px solid #C3BEB6;
   padding: 10px 20px;
   border-radius: 3px;
