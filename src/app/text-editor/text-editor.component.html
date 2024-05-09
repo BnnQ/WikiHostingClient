@@ -10,11 +10,12 @@
     <button class="editor-button" (click)="link()"><fa-icon [icon]="faLink"></fa-icon></button>
     <button class="editor-button" (click)="image()"><fa-icon [icon]="faImage"></fa-icon></button>
     <button class="editor-button" (click)="openTemplateMenu()"><fa-icon [icon]="faPuzzlePiece"></fa-icon></button>
+    <button class="editor-button" (click)="exitCurrentElement()"><fa-icon [icon]="faArrowRightToBracket"></fa-icon></button>
+    <button class="editor-button" (click)="switchMode()"><fa-icon [icon]="faExchangeAlt"></fa-icon></button>
   </div>
   <div class="text-area">
-    <div #editable class="editable-text" contenteditable="true" *ngIf="initialEditorHtml" [innerHTML]="initialEditorHtml">
-
-    </div>
+    <div #editable class="editable-text" contenteditable="true" [innerHTML]="editorContent" [style.display]="!isHtmlMode ? 'block' : 'none'"></div>
+    <textarea #textArea class="editable-text" [ngModel]="editorContent | safeHtmlToString" (input)="updateEditorContent($event)" [style.display]="isHtmlMode ? 'block' : 'none'"></textarea>
   </div>
   <div class="button-container">
     <button class="cancel-button" (click)="cancel()">CANCEL</button>

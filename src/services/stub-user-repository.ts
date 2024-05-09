@@ -3,13 +3,14 @@ import {User} from "../models/user";
 import {IUserRepository} from "./abstractions/i-user-repository";
 import {resolve} from "@angular/compiler-cli";
 import {model} from "@angular/core";
+import {UserProfileUpsertDto} from "../models/dto/user-profile-upsert-dto";
 
 export class StubUserRepository implements IUserRepository {
 
   users: User[] = [
-    new User(1, 'user1', 'assets/avatar.jpg'),
-    new User(2, 'user2', 'assets/avatar.jpg'),
-    new User(3, 'user3', 'assets/avatar.jpg')
+    new User(1, 'user1', 'assets/avatar.jpg', [], 1),
+    new User(2, 'user2', 'assets/avatar.jpg', [], 1),
+    new User(3, 'user3', 'assets/avatar.jpg', [], 1)
   ];
 
 
@@ -24,9 +25,13 @@ export class StubUserRepository implements IUserRepository {
     });
   }
 
+  editUserProfile(model: UserProfileUpsertDto): Promise<void> {
+    return Promise.resolve();
+  }
+
   registerUser(model: UserUpsertDto): Promise<User> {
     return new Promise<User>((resolve, reject) => {
-      const user = new User(this.users.length + 1, model.userName, model.avatarPath);
+      const user = new User(this.users.length + 1, model.userName, model.avatarPath, [], 1);
       this.users.push(user);
       resolve(user);
     });

@@ -13,10 +13,14 @@ export class StubPageRepository implements IPageRepository {
   }
 
   getPopularPages(limit: number): Promise<PageFeedDto[]> {
-  return Promise.resolve(this.pages.slice(0, limit).map(p => (new PageFeedDto(p.id, p.wikiId, new User(1, "Admin", "assets/avatar.jpg"), p.createdAt, p.editedAt, "Lorem ipsum dolor sit amet", "https://static.wikia.nocookie.net/1798fab5-dde0-46e4-aab0-4b1392889bb1/scale-to-width-down/800", 999, 999))));
+  return Promise.resolve(this.pages.slice(0, limit).map(p => (new PageFeedDto(p.id, p.wikiId, new User(1, "Admin", "assets/avatar.jpg", ['Admin'], 1), p.createdAt, p.editedAt, "Lorem ipsum dolor sit amet", "https://static.wikia.nocookie.net/1798fab5-dde0-46e4-aab0-4b1392889bb1/scale-to-width-down/800", 999, 999))));
+  }
+
+  getWikiPageByTitle(wikiTitle: string, pageTitle: string): Promise<Page> {
+    return Promise.resolve(this.pages[0]);
   }
   getPopularPagesByTopic(limit: number, topicId:number): Promise<PageFeedDto[]> {
-    return Promise.resolve(this.pages.slice(0, limit).map(p => (new PageFeedDto(p.id, p.wikiId, new User(1, "Admin", "assets/avatar.jpg"), p.createdAt, p.editedAt, "Lorem ipsum dolor sit amet", "https://static.wikia.nocookie.net/1798fab5-dde0-46e4-aab0-4b1392889bb1/scale-to-width-down/800", 999, 999))));
+    return Promise.resolve(this.pages.slice(0, limit).map(p => (new PageFeedDto(p.id, p.wikiId, new User(1, "Admin", "assets/avatar.jpg", ["Admin"], 5), p.createdAt, p.editedAt, "Lorem ipsum dolor sit amet", "https://static.wikia.nocookie.net/1798fab5-dde0-46e4-aab0-4b1392889bb1/scale-to-width-down/800", 999, 999))));
     }
 
   pages: Page[] = [

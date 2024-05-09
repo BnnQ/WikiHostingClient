@@ -7,6 +7,7 @@ import {ContributorRole} from "../../models/contributor-role";
 export interface IWikiRepository {
   getWikis(search? : string) : Promise<Wiki[]>;
   getWiki(id: number) : Promise<Wiki | undefined>;
+  getWikiByTitle(title: string) : Promise<Wiki | undefined>;
   createWiki(model: WikiUpsertDto) : Promise<Wiki>;
   updateWiki(id: number, model: WikiUpsertDto) : Promise<Wiki>;
   deleteWiki(id: number): Promise<void>;

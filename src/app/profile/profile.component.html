@@ -9,17 +9,11 @@
           <div class="profile__user_info">
             <div class="profile__info_title">
               <h2 class="profile__title_nickname">{{ user.userName }}</h2>
-              <div class="profile__title_role">Administrator</div>
+              <div class="profile__title_role" *ngIf="userRole !== ''">{{ userRole }}</div>
             </div>
             <div class="profile__info_actions">
-              <div class="profile__actions_edits">3940 EDITS</div>
+              <div class="profile__actions_edits">{{ user.numberOfPages }} PAGES</div>
               <span class="profile__actions_circle"></span>
-              <div class="profile__actions_posts">174 POSTS</div>
-            </div>
-            <div class="profile__info_about">
-              <p class="profile__about_text">
-                Character type is hidden.
-              </p>
             </div>
             <div class="profile__info_discord">
               <img
@@ -30,35 +24,27 @@
             </div>
           </div>
         </div>
-        <div class="profile__header_post">
-          <button class="profile__post_button" type="button">
-            Post to wall
+        <div *ngIf="isOwnProfile" class="profile__header_post">
+          <button class="profile__post_button" *ngIf="!aboutEditingEnabled" (click)="switchAboutEditing()" type="button">
+            Update about
           </button>
+          <div *ngIf="aboutEditingEnabled">
+            <textarea [(ngModel)]="aboutText" style="background-color: rgb(24, 21, 21); color: white; margin-bottom: 2px"></textarea>
+            <div>
+              <button (click)="updateAbout()" class="profile__post_button" type="button">
+                Save
+              </button>
+            </div>
+          </div>
         </div>
       </div>
       <div class="profile__wrapper_main">
         <div class="profile__main_tabs">
           <div class="profile__tabs_item active">About</div>
-          <div class="profile__tabs_item">Message</div>
-          <div class="profile__tabs_item">Blog</div>
-          <div class="profile__tabs_item">Contributions</div>
-          <div class="profile__tabs_item">Activity</div>
         </div>
-        <div class="profile__main_source">
-          <div class="profile__source_message">
-            <img
-              class="profile__message_icon"
-              src="/assets/images/lock-solid.svg"
-              alt=""
-            />
-            <p class="profile__message_text">View source</p>
-          </div>
-          <span class="profile__source_dash"></span>
-          <span class="profile__source_dots">
-            <img src="/assets/images/ellipsis-vertical-solid.svg" alt="" />
-          </span>
+        <div *ngIf="user.about" class="profile__main_block">
+          {{user.about}}
         </div>
-        <div class="profile__main_block"></div>
       </div>
       <div class="profile__wrapper_footer">
         <p class="profile__footer_text">

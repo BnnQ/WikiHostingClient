@@ -136,7 +136,16 @@ form input {
 }
 
 .signin-container {
-    text-align: center; 
+    text-align: center;
+}
+
+.form-control {
+  font-family: "Roboto", sans-serif;
+}
+
+div:has(> .form-control) {
+  color: white;
+  font-family: "Roboto", sans-serif;
 }
 
 .form-control::placeholder {
@@ -152,7 +161,7 @@ form input {
 }
 
 .form-control[type="text"] {
-    color: #ffffff;
+    color: #ffffff !important;
     font-size: medium;
     padding-left: 10px;
 }
@@ -181,7 +190,7 @@ form input {
 .checkbox-container input {
     width: 30px;
     height: auto;
-    margin-right: 10px; 
+    margin-right: 10px;
     vertical-align: middle;
 }
 
@@ -194,7 +203,7 @@ form input {
     font-size: medium;
     color: #C1C1C1;
     margin-bottom: 5px;
-    text-align: left; 
+    text-align: left;
 }
 .remember-me input[type="checkbox"] {
 
@@ -230,7 +239,7 @@ form input {
     margin-top: 20px;
     background-color: #330063;
     color: #ffffff;
-    height: 50px;  
+    height: 50px;
     width: 80%;
     font-size: large;
     border: 0px;
@@ -250,7 +259,7 @@ form input,
     text-align: center;
     font-size: medium;
     margin-top: 20px;
-    
+
 }
 
 .p1 a{
@@ -323,13 +332,13 @@ form input,
 
 #image img{
    width: 78px;
-   height: 69px; 
+   height: 69px;
 }
 
 .images {
     display: flex;
     flex-direction: column;
-    margin-left: 20px; 
+    margin-left: 20px;
 }
 .container {
     display: flex;

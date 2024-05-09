@@ -43,6 +43,11 @@
   outline: none;
   overflow: auto;
   background-color: #2f2f2f;
+  color: white;
+}
+
+textarea.editable-text {
+  font-size: 1.1rem;
 }
 
 ::ng-deep .editable-text img {

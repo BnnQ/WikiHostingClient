@@ -56,6 +56,7 @@
 
           <div class="dropdown-content right">
             <a href="wiki/{{wiki.id}}/createPage">Create new page</a>
+            <a (click)="copyLink()" style="cursor: pointer">Copy link to this page</a>
             <a *ngIf="currentPageId && currentPageId !== 0" href="/wiki/{{wiki.id}}/editPage/{{currentPageId}}">Edit current page</a>
             <a *ngIf="currentPageId && currentPageId !== 0" href="/wiki/{{wiki.id}}/deletePage/{{currentPageId}}">Delete current page</a>
           </div>

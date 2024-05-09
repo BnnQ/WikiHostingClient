@@ -32,6 +32,10 @@ export class ApiWikiRepository implements IWikiRepository {
     return await this.httpService.get<Wiki>(new URL(`${this.serverApiUrl}/wiki`), {id: id});
   }
 
+  getWikiByTitle(wikiTitle: string): Promise<Wiki | undefined> {
+    return this.httpService.get<Wiki>(new URL(`${this.serverApiUrl}/wiki`), {wikiTitle: wikiTitle});
+  }
+
   async updateWiki(id: number, model: WikiUpsertDto): Promise<Wiki> {
     return await this.httpService.put<Wiki>(new URL(`${this.serverApiUrl}/wiki`), model, {id: id});
   }

@@ -14,13 +14,16 @@ import {FeedbackComponent} from "./feedback/feedback.component";
 import {CreateWikiComponent} from "./create-wiki/create-wiki.component";
 import {CreatePageComponent} from "./create-page/create-page.component";
 import {EditPageComponent} from "./edit-page/edit-page.component";
+import {SubscriptionsComponent} from "./subscriptions/subscriptions.component";
 import { WikiPageComponent } from './wiki-page/wiki-page.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'wiki/:id', component: WikiComponent },
   { path: 'wiki/:id/page/:pageId', component: WikiComponent },
+  { path: 'wiki/:id/createPage', component: CreatePageComponent },
   { path: 'wiki/:id/contributors', component: WikiContributorsComponent },
+  { path: 'wiki/:wikiTitle/:pageTitle', component: WikiComponent },
   { path: 'feed', component: FeedComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
@@ -30,10 +33,9 @@ const routes: Routes = [
   { path: 'profile/:id', component: ProfileComponent },
   { path: 'feedback', component: FeedbackComponent },
   { path: 'createWiki', component: CreateWikiComponent },
-  { path: 'wiki/:id/createPage', component: CreatePageComponent },
   { path: 'wiki/:id/editPage/:pageId', component: EditPageComponent },
+  { path: 'pricing', component: SubscriptionsComponent },
   { path: 'page/:category', component: WikiPageComponent },
-
 ];
 
 @NgModule({

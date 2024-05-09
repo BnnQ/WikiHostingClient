@@ -15,7 +15,7 @@ export class RegistrationComponent{
   password:string="";
   agreed:boolean = false
   errorMsg:string = "";
-  
+
   constructor(private http:HttpClient, private router: Router){
   }
 
@@ -38,7 +38,7 @@ export class RegistrationComponent{
       this.http.post('https://localhost:7133/api/Users/register',credentials,httpOptions).subscribe(
         (response)=>{
           console.log('Registration successful',response);
-          this.router.navigate(['/signin']);
+          this.router.navigate(['/login']);
         },
         (error)=>{
           console.error('Registration failed', error);

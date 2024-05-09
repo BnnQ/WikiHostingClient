@@ -12,7 +12,7 @@ export class AxiosHttpService implements IHttpService {
   private readonly onUnauthorized: (response : AxiosResponse) => void;
   constructor(router: Router) {
     this.onUnauthorized = (reason : any) => {
-      if (reason.response.status === 401) {
+      if (reason.response.status === 401 && !reason.request.responseURL.includes('getMyId')) {
         router.navigate(['/login']);
       }
     };

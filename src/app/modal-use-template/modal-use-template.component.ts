@@ -1,4 +1,4 @@
-import {Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
 import {Template} from "../../models/template";
 import {ModalService} from "ngx-modal-ease";
@@ -37,7 +37,8 @@ export class ModalUseTemplateComponent implements OnInit {
 
     if (!this.template.variables || this.template.variables.length === 0) {
       console.log('There is no variables in the template')
-      this.modalService.close(this.template.html);
+      this.onSubmit();
+      return;
     }
 
     this.createForm();
@@ -75,30 +76,109 @@ export class ModalUseTemplateComponent implements OnInit {
     console.log('variables: ', variables);
 
     let html = this.template.html;
+    let css = this.template.css;
 
-    let js = this.template.js;
     if (variables.length > 0) {
-      if (js) {
-        variables.forEach(variable => {
-          js = `let ${variable.name} = ${JSON.stringify(variable.value)};\n` + js;
-        });
-        js += 'return {' + variables.map(variable => `${variable.name}: ${variable.name}`).join(', ') + '};';
+      html = this.processVariables(variables, html, this.template.js);
+    }
 
-        const fn = new Function(js);
-        const result = fn();
-
-        variables.forEach(variable => {
-          html = html.replace(new RegExp(`{${variable.name}}`, 'g'), result[variable.name]);
-        });
-      } else {
-        variables.forEach(variable => {
-          html = html.replace(new RegExp(`{${variable.name}}`, 'g'), variable.value);
-        });
-      }
+    if (css) {
+      html = this.processCss(css, html);
     }
 
     this.modalService.close(html);
-
-    // this.editable.nativeElement.innerHTML = html;
   }
+
+  processVariables(variables: Variable[], html: string, js?: string): string {
+    if (js) {
+      js = this.addVariablesToJs(variables, js);
+      const result = this.executeJs(js);
+      html = this.replaceHtmlVariables(variables, html, result);
+    } else {
+      html = this.replaceHtmlVariables(variables, html);
+    }
+    return html;
+  }
+
+  addVariablesToJs(variables: Variable[], js: string): string {
+    variables.forEach(variable => {
+      js = `let ${variable.name} = ${variable.type === 'string' ? '"' : ''}${variable.value}${variable.type === 'string' ? '"' : ''};\n` + js;
+    });
+    js += '\nreturn {' + variables.map(variable => `${variable.name}: ${variable.name}`).join(', ') + '};';
+    console.log(js);
+    return js;
+  }
+
+  executeJs(js: string): any {
+    const fn = new Function(js);
+    return fn();
+  }
+
+  replaceHtmlVariables(variables: Variable[], html: string, result?: any): string {
+    variables.forEach(variable => {
+      const value = result ? result[variable.name] : variable.value;
+      html = html.replace(new RegExp(`{${variable.name}}`, 'g'), value);
+    });
+    return html;
+  }
+
+  processCss(css: string, html: string): string {
+    const parser = new DOMParser();
+    let doc = parser.parseFromString(html, 'text/html');
+
+    let cssRules = css.match(/[^{]+\{[^}]*}/g);
+
+    if (cssRules) {
+      let modifiedCssRules: string[] = this.modifyCssRules(cssRules);
+      console.log('modifying css rules', modifiedCssRules);
+      doc = this.modifyHtmlClasses(doc);
+      doc = this.applyCssRules(modifiedCssRules, doc);
+      html = new XMLSerializer().serializeToString(doc);
+    }
+
+    return html;
+  }
+
+  modifyCssRules(cssRules: string[]): string[] {
+    let modifiedCssRules: string[] = [];
+    cssRules.forEach(rule => {
+      let match = rule.match(/([^{}]+)\{([^{}]+)}/)!;
+      let selector = match[1].trim();
+      let styles = match[2].trim();
+
+      if (selector.startsWith('.')) {
+        const modifiedSelector = selector.replace('.', `.${this.template.name}-`);
+        modifiedCssRules.push(`${modifiedSelector} { ${styles} }`);
+      }
+    });
+    return modifiedCssRules;
+  }
+
+  modifyHtmlClasses(doc: Document): Document {
+    const htmlDoc = doc.cloneNode(true) as Document;
+    const elements = htmlDoc.querySelectorAll('[class]');
+    elements.forEach((el: Element) => {
+      const htmlEl = el as HTMLElement;
+      const classes = htmlEl.className.split(' ');
+      const modifiedClasses = classes.map(className => `${this.template.name}-${className}`);
+      htmlEl.className = modifiedClasses.join(' ');
+    });
+    return htmlDoc;
+  }
+
+  applyCssRules(modifiedCssRules: string[], doc: Document): Document {
+    modifiedCssRules.forEach(rule => {
+      let match = rule.match(/([^{}]+)\{([^{}]+)}/)!;
+      let selector = match[1].trim();
+      let styles = match[2].trim();
+
+      const elements = doc.querySelectorAll(selector);
+      elements.forEach((el: Element) => {
+        const htmlEl = el as HTMLElement;
+        htmlEl.style.cssText += styles;
+      });
+    });
+    return doc;
+  }
+
 }

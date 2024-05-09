@@ -5,6 +5,7 @@ import {Inject, Injectable} from "@angular/core";
 import IHttpService from "./abstractions/i-http-service";
 import {SERVICE_IDENTIFIERS} from "../app/app.module";
 import {environment} from "../environments/environment";
+import {UserProfileUpsertDto} from "../models/dto/user-profile-upsert-dto";
 
 @Injectable({providedIn: 'root'})
 export class ApiUserRepository implements IUserRepository {
@@ -15,11 +16,15 @@ export class ApiUserRepository implements IUserRepository {
   }
 
   getUser(id?: number): Promise<User> {
-    return this.httpService.get<User>(new URL(`${this.serverApiUrl}/api/users/profile/${id ? id : ''}`));
+    return this.httpService.get<User>(new URL(`${this.serverApiUrl}/api/users/profile/${id ? id : ''}`), {}, { relatedContentLoadLimit: 0 });
   }
 
   getCurrentUserId(): Promise<number> {
     return this.httpService.get<number>(new URL(`${this.serverApiUrl}/api/users/getMyId`));
+  }
+
+  editUserProfile(model: UserProfileUpsertDto): Promise<void> {
+    return this.httpService.put<void>(new URL(`${this.serverApiUrl}/api/users/profile`), model);
   }
 
   registerUser(model: UserUpsertDto): Promise<User> {
