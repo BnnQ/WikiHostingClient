@@ -50,6 +50,7 @@ import { CreatePageComponent } from './create-page/create-page.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
 import { ModalWikiSettingsComponent } from './modal-wiki-settings/modal-wiki-settings.component';
 import {ApiUserRepository} from "../services/api-user-repository";
+import { WikiPageComponent } from './wiki-page/wiki-page.component';
 
 export const SERVICE_IDENTIFIERS = {
   IHttpService: new InjectionToken<IHttpService>('IHttpService'),
@@ -84,7 +85,8 @@ export const SERVICE_IDENTIFIERS = {
     CreateWikiComponent,
     CreatePageComponent,
     EditPageComponent,
-    ModalWikiSettingsComponent
+    ModalWikiSettingsComponent,
+    WikiPageComponent
   ],
   imports: [
     BrowserModule,

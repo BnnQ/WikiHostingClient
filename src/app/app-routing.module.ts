@@ -14,6 +14,7 @@ import {FeedbackComponent} from "./feedback/feedback.component";
 import {CreateWikiComponent} from "./create-wiki/create-wiki.component";
 import {CreatePageComponent} from "./create-page/create-page.component";
 import {EditPageComponent} from "./edit-page/edit-page.component";
+import { WikiPageComponent } from './wiki-page/wiki-page.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -31,6 +32,8 @@ const routes: Routes = [
   { path: 'createWiki', component: CreateWikiComponent },
   { path: 'wiki/:id/createPage', component: CreatePageComponent },
   { path: 'wiki/:id/editPage/:pageId', component: EditPageComponent },
+  { path: 'page/:category', component: WikiPageComponent },
+
 ];
 
 @NgModule({

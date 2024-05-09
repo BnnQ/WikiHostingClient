@@ -1,0 +1,270 @@
+body{
+    background-color: #170723;
+}
+.main {
+    width: 100%;
+    min-height: 90vh;
+    height: auto;
+    background-color: #170723;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.search{
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+}
+
+#logout {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 30px;
+   
+}
+#logout img{
+    height: 40px ;
+}
+
+.search input {
+    border-radius: 5px;
+    width: 20%;
+    height: 25px;
+    margin: 0 auto; 
+}
+
+.menu {
+    top: 0;
+    position: absolute;
+    width: 80px;
+    height: 90%; 
+    background-color: #1E0338;
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+}
+
+.divInfo {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    height: auto; 
+    background-color: #170723;
+}
+.newsWiki{
+    width: 40%;
+}
+.wiki-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.wiki-link {
+    background-color: #2B0054;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+
+
+.wikiEntries{
+    position: relative;
+    margin:15px;
+    padding: 10px;
+    background-color: #2B0054;
+    color: #D9D9D9;
+}
+.wikiEntries img{
+    width: 50%;
+}
+
+.newsWiki h1{
+    color: #D9D9D9;
+    font-family: kelly slab;
+    font-weight: lighter;
+}
+hr{
+    border: 1px solid #DF622C;
+}
+
+.menu img {
+    margin: 10px;
+    width: 45px;
+    height: auto;
+}
+#games{
+    margin-top: 40px;
+}
+
+#notification{
+    width: 82px;
+    height: 70px;
+}
+
+
+.main-footer {
+  background: #2B0054;
+  height: 500px;
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+}
+.footer-section p{
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.info a{
+  color: white;
+  text-decoration: none;
+  margin-bottom: 10px;
+  display: block;
+}
+.socialLinks a{
+  margin-right: 10px;
+}
+
+
+.footer-section {
+  flex: 1;
+  background-color: #2B0054;
+  color: white;
+  padding: 20px;
+  margin: 20px;
+}
+
+#image{
+  height: 100px;
+  width: 100px;
+  background: linear-gradient(180deg, #9BCDEE 0%, #617D8D 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+#image img{
+ width: 78px;
+ height: 69px; 
+}
+
+.images {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px; 
+}
+.container {
+  display: flex;
+}
+
+.main2 {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    background-color: #170722;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  body {
+    background-color: #170722;
+  }
+  
+  .feed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .card {
+    display: flex;
+    flex-direction: column;
+    background-color: #2b0054;
+    color: white;
+    border-radius: 10px;
+    margin: 10px;
+    width: 80%;
+    max-width: 600px;
+    padding: 8px;
+  }
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .author-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .author-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .author-nickname, .date {
+    font-size: 1.25em;
+  }
+  
+  .date {
+    color: #888;
+  }
+  
+  .card-body {
+    padding: 10px;
+  }
+  
+  .card-title {
+    font-size: 1.85em;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  
+  .article-image {
+    width: 100%;
+    height: auto;
+  }
+  
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .likes, .comments, .share-btn {
+    color: white;
+    display: flex;
+    align-items: center;
+    font-size: 1.25em;
+  }
+  
+  fa-icon {
+    font-size: 1.5em;
+    margin-right: 8px;
+  }
+  
+  .share-btn {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+  }
+  
+  .icon-group {
+    display: flex;
+    justify-content: space-between;
+    width: 45%; /* Adjust this value to increase or decrease the space */
+  }
