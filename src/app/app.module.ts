@@ -50,9 +50,9 @@ import { CreatePageComponent } from './create-page/create-page.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
 import { ModalWikiSettingsComponent } from './modal-wiki-settings/modal-wiki-settings.component';
 import {ApiUserRepository} from "../services/api-user-repository";
-import { ReportsModerationComponent } from './reports-moderation/reports-moderation.component';
 import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
 import { SafeHtmlToStringPipe } from '../pipes/safe-html-to-string/safe-html-to-string.pipe';
+import { WikiPageComponent } from './wiki-page/wiki-page.component';
 
 export const SERVICE_IDENTIFIERS = {
   IHttpService: new InjectionToken<IHttpService>('IHttpService'),
@@ -88,9 +88,9 @@ export const SERVICE_IDENTIFIERS = {
     CreatePageComponent,
     EditPageComponent,
     ModalWikiSettingsComponent,
-    ReportsModerationComponent,
     SubscriptionsComponent,
-    SafeHtmlToStringPipe
+    SafeHtmlToStringPipe,
+    WikiPageComponent
   ],
   imports: [
     BrowserModule,

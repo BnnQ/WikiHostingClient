@@ -4,6 +4,7 @@ import {PageFeedDto} from "../../models/dto/page-feed-dto";
 
 export interface IPageRepository {
   getPopularPages(limit: number) : Promise<PageFeedDto[]>;
+  getPopularPagesByTopic(limit:number, topicId:number): Promise<PageFeedDto[]>;
   getPage(id : number) : Promise<Page>;
   getWikiPage(wikiId : number, pageId : number) : Promise<Page>;
   getWikiPageByTitle(wikiTitle: string, pageTitle : string) : Promise<Page>;

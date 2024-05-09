@@ -1,0 +1,111 @@
+<div class="main" [ngStyle]="{ 'background-image': 'url(' + topicImage + ')' }">
+    
+    <div class="search">
+        <input type="text" placeholder="Search" [(ngModel)]="searchQuery" (keyup.enter)="search()">
+    </div>
+    <div>
+        <a id="logout" href="#"><img src="assets/images/logout.png"></a>
+    </div>
+</div>
+<div class="divInfo">
+    <div class="newsWiki">
+        <h1>NEWS</h1>
+        <hr>
+        <div class="main2">
+            <div class="feed">
+              <div *ngFor="let page of pages" class="card">
+                <div class="card-header">
+                  <div class="author-info">
+                    <img [src]="page.author.avatarPath" alt="{{page.author.userName}}" class="author-avatar">
+                    <div class="author-nickname">{{page.author.userName}}</div>
+                  </div>
+                  <div class="date">{{page.createdAt | date}}</div>
+                </div>
+                
+                <div class="card-body">
+                  <h5 class="card-title">{{page.title}}</h5>
+                  <img *ngIf="page.imagePath !== 'No image'" [src]="page.imagePath" alt="{{page.title}}" class="article-image">
+                </div>
+                <div class="card-footer">
+                  <div class="icon-group">
+                    <div class="likes">
+                      <fa-icon [icon]="faHeart"></fa-icon>
+                      {{page.numberOfLikes}}
+                    </div>
+                    <div class="comments">
+                      <fa-icon [icon]="faComment"></fa-icon>
+                      {{page.numberOfComments}}
+                    </div>
+                    <button class="share-btn">
+                      <fa-icon [icon]="faShareSquare"></fa-icon>
+                    </button>
+                  </div>
+                  <a [routerLink]="['/wiki', page.wikiId]">
+                    <img src="assets/images/goToWiki.png">
+                </a>
+                </div>
+              </div>
+            </div>
+          
+          </div>
+
+       
+        
+
+    </div>
+
+</div>
+
+
+<footer class="main-footer">
+  <div class="footer-section">
+    <img src="assets/images/LOGO.png">
+  </div>
+  <div class="footer-section">
+    <p>Overview</p>
+    <div class="info">
+      <a href="#">Support</a>
+      <a href="#">Contacts Us About Advertise</a>
+      <a href="#">FAQs</a>
+      <a href="#">Privacy and Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Do Not Sell or Share My</a>
+      <a href="#">Personal Information</a>
+    </div>
+  </div>
+  <div class="footer-section">
+    <p>Community</p>
+    <div class="info">
+      <a href="#">What is "WikiHosting"?</a>
+      <a href="#">About Us</a>
+      <a href="#">Contacts</a>
+      <a href="#">Media Kit(Merch)</a>
+    </div>
+
+
+  </div>
+  <div class="footer-section">
+    <p>GAMEPEDIA APPS</p>
+    <div class="container">
+
+      <div id="image">
+        <img src="assets/images/gamepad.png">
+      </div>
+      <div class="images">
+        <img src="assets/images/gplay.png">
+        <br>
+        <img src="assets/images/appstore.png">
+      </div>
+    </div>
+    <p>FOLLOW US</p>
+    <div class="socialLinks">
+      <a href="#"><img src="assets/images/facebook2.png"></a>
+      <a href="#"><img src="assets/images/twitter.png"></a>
+      <a href="#"><img src="assets/images/youtube.png"></a>
+      <a href="#"><img src="assets/images/inst.png"></a>
+      <a href="#"><img src="assets/images/in.png"></a>
+    </div>
+
+
+  </div>
+</footer>

@@ -18,6 +18,10 @@ export class ApiPageRepository implements IPageRepository {
     return this.httpService.get<PageFeedDto[]>(new URL(`${this.serverApiUrl}/page/getRelevantWikiPages`), undefined, {limit: limit});
     }
 
+  getPopularPagesByTopic(limit: number, topicId: number): Promise<PageFeedDto[]> {
+        return this.httpService.get<PageFeedDto[]>(new URL(`${this.serverApiUrl}/page/getRelevantWikiPages?limit=${limit}&topicId=${topicId}`));
+    }
+
   getWikiPage(wikiId: number, pageId: number): Promise<Page> {
         return this.httpService.get<Page>(new URL(`${this.serverApiUrl}/page/${pageId}`));
     }
