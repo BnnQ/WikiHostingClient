@@ -6,6 +6,7 @@ import {SERVICE_IDENTIFIERS} from "../app.module";
 import {IUserRepository} from "../../services/abstractions/i-user-repository";
 import {IPageRepository} from "../../services/abstractions/i-page-repository";
 import {faComment, faHeart, faShareSquare, faThumbsUp} from "@fortawesome/free-regular-svg-icons";
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-wiki-page',
@@ -38,7 +39,7 @@ protected readonly faThumbsUp = faThumbsUp;
   }
 
   async getCategory() {
-    const apiUrl = `https://localhost:7133/Topic?search=${this.category}`;
+    const apiUrl = environment.serverApiUrl + `/Topic?search=${this.category}`;
     try {
       const data = await this.http.get<any>(apiUrl).toPromise();
       if (data.length > 0) {
