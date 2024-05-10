@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, map } from 'rxjs';
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-search',
@@ -33,7 +34,7 @@ export class SearchComponent implements OnInit {
   }
 
   getCategories(): Observable<string[]> {
-    const apiUrl = 'https://localhost:7133/Topic';
+    const apiUrl = environment.serverApiUrl + '/Topic';
     return this.http.get<{ name: string }[]>(apiUrl)
       .pipe(
         map(categories => categories.map(category => category.name))
@@ -52,7 +53,7 @@ export class SearchComponent implements OnInit {
 
   onSearchRoute(query: string): void {
     if (query.length >= 1) {
-      let apiUrl = `https://localhost:7133/Wiki?search=${query}`;
+      let apiUrl = environment.serverApiUrl + `/Wiki?search=${query}`;
       this.http.get<any[]>(apiUrl).subscribe(
         (response) => {
           this.wikiDetails = response.map(item => {
@@ -81,7 +82,7 @@ export class SearchComponent implements OnInit {
   onSearch(event: any): void {
     const query = event.target.value;
     this.searchQuery = query;
-    let apiUrl = `https://localhost:7133/Wiki`;
+    let apiUrl = environment.serverApiUrl + `/Wiki`;
     if (query.length >= 1) {
       apiUrl += `?search=${query}`;
     }

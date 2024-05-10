@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-registration',
@@ -35,7 +36,7 @@ export class RegistrationComponent{
 
       console.log(credentials);
 
-      this.http.post('https://localhost:7133/api/Users/register',credentials,httpOptions).subscribe(
+      this.http.post(environment.serverApiUrl + '/api/Users/register',credentials,httpOptions).subscribe(
         (response)=>{
           console.log('Registration successful',response);
           this.router.navigate(['/login']);

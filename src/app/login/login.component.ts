@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import {environment} from "../../environments/environment";
 
 
 @Component({
@@ -27,7 +28,7 @@ export class LoginComponent {
     })
   };
 
-  this.http.post<any>('https://localhost:7133/api/Users/auth', credentials,httpOptions).subscribe(
+  this.http.post<any>(environment.serverApiUrl + '/api/Users/auth', credentials,httpOptions).subscribe(
     (response)=>{
       console.log('Login successful',response);
       this.router.navigate(['/search']);
