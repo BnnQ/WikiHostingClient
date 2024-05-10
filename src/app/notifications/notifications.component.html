@@ -1,0 +1,49 @@
+<section class="notification__section">
+  <div class="container">
+    <div class="notification__wrapper">
+        <div class="notification__block">
+          <div class="notification__block_header">
+            <h1 class="notification__header_title">Notification</h1>
+            <div class="notification__header_line"></div>
+          </div>
+          <div class="notification__block_main">
+            <div class="notification__main_search">
+              <input
+                type="text"
+                class="notification__search_input"
+                placeholder="Search"
+                (keydown)="search($event)"
+              />
+              <img
+                src="../../assets/images/magnifying-glass-solid.svg"
+                alt=""
+                class="notification__search_icon"
+              />
+            </div>
+            <div class="notification__main_items">
+              <div class="notification__main_item" *ngFor="let notification of notificationsToDisplay">
+                <div class="notification__item_header">
+                  <div class="notification__item_logo">
+                    <img
+                      src="../../assets/avatar.jpg"
+                      alt=""
+                      class="notification__logo_icon"
+                    />
+                  </div>
+                  <div class="notification__item_date">
+                    <p class="notification__date_time">{{notification.timestamp}}</p>
+                  </div>
+                </div>
+                <div class="notification__item_main">
+                  <h3 class="notification__item_subtitle">Achievement earned!</h3>
+                  <p class="notification__item_text">
+                    {{notification.text}}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</section>

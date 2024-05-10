@@ -1,13 +1,23 @@
 <app-wiki-layout *ngIf="wiki" [wiki]="wiki" [currentPageId]="pageId">
   <div style="position: relative;"> <!-- Adding relative positioning for proper button placement -->
-    <button class="report-button">Report</button>
-    <div class="report-menu">
-      <div class="menu-item" onclick="reportPost('Spam')">Spam</div>
-      <div class="menu-item" onclick="reportPost('Harassment')">Harassment</div>
-      <div class="menu-item" onclick="reportPost('Misinformation')">Misinformation</div>
-      <div class="menu-item" onclick="reportPost('Offensive Content')">Offensive Content</div>
-      <div class="menu-item" onclick="reportPost('Other')">Other</div>
-    </div>
+    <button class="vote-button like" (click)="like()">
+      <fa-icon *ngIf="!isLiked" [icon]="faCircleUpRegular"></fa-icon>
+      <fa-icon *ngIf="isLiked" [icon]="faCircleUpSolid"></fa-icon>
+    </button>
+    <button class="vote-button dislike" (click)="dislike()">
+      <fa-icon *ngIf="!isDisliked" [icon]="faCircleDownRegular"></fa-icon>
+      <fa-icon *ngIf="isDisliked" [icon]="faCircleDownSolid"></fa-icon>
+    </button>
+    <button class="report-button" (click)="openReportMenu()">Report</button>
+
+  <!--    <button class="report-button">Report</button>-->
+  <!--    <div class="report-menu">-->
+  <!--      <div class="menu-item" (click)="reportPost('Spam')">Spam</div>-->
+  <!--      <div class="menu-item" (click)="reportPost('Harassment')">Harassment</div>-->
+  <!--      <div class="menu-item" (click)="reportPost('Misinformation')">Misinformation</div>-->
+  <!--      <div class="menu-item" (click)="reportPost('Offensive Content')">Offensive Content</div>-->
+  <!--      <div class="menu-item" (click)="reportPost('Other')">Other</div>-->
+  <!--    </div>-->
     <div *ngIf="page" [innerHtml]="getSafePageHtml()"></div>
   </div>
 </app-wiki-layout>

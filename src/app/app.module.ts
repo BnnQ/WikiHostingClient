@@ -53,6 +53,13 @@ import {ApiUserRepository} from "../services/api-user-repository";
 import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
 import { SafeHtmlToStringPipe } from '../pipes/safe-html-to-string/safe-html-to-string.pipe';
 import { WikiPageComponent } from './wiki-page/wiki-page.component';
+import { CommentsComponent } from './comments/comments.component';
+import {ICommentRepository} from "../services/abstractions/i-comment-repository";
+import {ApiCommentRepository} from "../services/api-comment-repository";
+import {IRatingRepository} from "../services/abstractions/i-rating-repository";
+import {ApiRatingRepository} from "../services/api-rating-repository";
+import { NotificationsComponent } from './notifications/notifications.component';
+import { ModalReportComponent } from './modal-report/modal-report.component';
 
 export const SERVICE_IDENTIFIERS = {
   IHttpService: new InjectionToken<IHttpService>('IHttpService'),
@@ -63,7 +70,9 @@ export const SERVICE_IDENTIFIERS = {
   IMediaRepository: new InjectionToken<IMediaRepository>('IMediaRepository'),
   ITemplateRepository: new InjectionToken<ITemplateRepository>('ITemplateRepository'),
   IFeedbackRepository: new InjectionToken<IFeedbackRepository>('IFeedbackRepository'),
-  ITopicRepository: new InjectionToken<ITopicRepository>('ITopicRepository')
+  ITopicRepository: new InjectionToken<ITopicRepository>('ITopicRepository'),
+  ICommentRepository: new InjectionToken<ICommentRepository>('ICommentRepository'),
+  IRatingRepository: new InjectionToken<IRatingRepository>('IRatingRepository')
 }
 
 @NgModule({
@@ -90,7 +99,10 @@ export const SERVICE_IDENTIFIERS = {
     ModalWikiSettingsComponent,
     SubscriptionsComponent,
     SafeHtmlToStringPipe,
-    WikiPageComponent
+    WikiPageComponent,
+    CommentsComponent,
+    NotificationsComponent,
+    ModalReportComponent
   ],
   imports: [
     BrowserModule,
@@ -115,7 +127,9 @@ export const SERVICE_IDENTIFIERS = {
     {provide: SERVICE_IDENTIFIERS.ITemplateRepository, useClass: ApiTemplateRepository},
     {provide: SERVICE_IDENTIFIERS.INotificationService, useClass: SignalNotificationService},
     {provide: SERVICE_IDENTIFIERS.IFeedbackRepository, useClass: ApiFeedbackRepository},
-    {provide: SERVICE_IDENTIFIERS.ITopicRepository, useClass: ApiTopicRepository}
+    {provide: SERVICE_IDENTIFIERS.ITopicRepository, useClass: ApiTopicRepository},
+    {provide: SERVICE_IDENTIFIERS.ICommentRepository, useClass: ApiCommentRepository},
+    {provide: SERVICE_IDENTIFIERS.IRatingRepository, useClass: ApiRatingRepository}
   ],
   bootstrap: [AppComponent]
 })

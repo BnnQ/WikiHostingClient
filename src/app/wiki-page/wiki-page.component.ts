@@ -36,7 +36,7 @@ protected readonly faThumbsUp = faThumbsUp;
     this.pages = await this.pageRepository.getPopularPagesByTopic(20, this.topicId);
     console.log(this.pages);
   }
-  
+
   async getCategory() {
     const apiUrl = `https://localhost:7133/Topic?search=${this.category}`;
     try {
@@ -58,7 +58,9 @@ protected readonly faThumbsUp = faThumbsUp;
     }
   }
 
+  async copyShareLink(wikiId : number, pageId : number) {
+    await navigator.clipboard.writeText(window.location.origin + '/wiki/' + wikiId + '/page/' + pageId);
+  }
 
-  
 }
 

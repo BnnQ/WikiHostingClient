@@ -19,7 +19,6 @@ interface Variable {
 })
 export class ModalCreateTemplateComponent {
   form: FormGroup;
-  imageFile?: File;
 
   constructor(private readonly fb: FormBuilder, private readonly modalService : ModalService, @Inject(SERVICE_IDENTIFIERS.ITemplateRepository) private readonly templateRepository : ITemplateRepository, @Inject(SERVICE_IDENTIFIERS.IMediaRepository) private readonly mediaRepository:  IMediaRepository) {
     this.form = this.fb.group({
@@ -47,23 +46,19 @@ export class ModalCreateTemplateComponent {
     });
   }
 
-  onImageSelected(event: Event) {
-    const inputElement = event.target as HTMLInputElement;
-
-    if (inputElement.files && inputElement.files.length > 0) {
-      this.imageFile = inputElement.files[0];
-    }
-  }
+  // onImageSelected(event: Event) {
+  //   const inputElement = event.target as HTMLInputElement;
+  //
+  //   if (inputElement.files && inputElement.files.length > 0) {
+  //     this.imageFile = inputElement.files[0];
+  //   }
+  // }
 
   async onSubmit(): Promise<void> {
-    if (!this.imageFile)
-      return;
-
     const jsValue = this.form.get('js')?.value;
     const cssValue = this.form.get('css')?.value;
     const htmlValue = this.form.get('html')?.value;
     const name = this.form.get('name')?.value;
-    const imagePath = await this.mediaRepository.uploadImage(this.imageFile);
 
     const variables: Variable[] = this.variables.value;
     let variableString = '';
@@ -80,7 +75,7 @@ export class ModalCreateTemplateComponent {
       variableString = variableString.slice(0, -1);
     }
 
-    let template = new Template(0, name, imagePath, 0, htmlValue, true, cssValue === '' ? undefined : cssValue, jsValue === '' ? undefined : jsValue, variableString === '' ? undefined : variableString);
+    let template = new Template(0, name, 0, htmlValue, true, cssValue === '' ? undefined : cssValue, jsValue === '' ? undefined : jsValue, variableString === '' ? undefined : variableString);
     template = await this.templateRepository.createTemplate(template);
 
     this.modalService.close(template.id);

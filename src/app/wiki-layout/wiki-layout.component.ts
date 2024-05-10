@@ -11,6 +11,8 @@ import {ModalService} from "ngx-modal-ease";
 import {ModalWikiSettingsComponent} from "../modal-wiki-settings/modal-wiki-settings.component";
 import {SERVICE_IDENTIFIERS} from "../app.module";
 import {IPageRepository} from "../../services/abstractions/i-page-repository";
+import {ModalReportComponent} from "../modal-report/modal-report.component";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-wiki-layout',
@@ -27,7 +29,7 @@ export class WikiLayoutComponent implements OnInit {
   }
 
   getBackgroundImage(): SafeStyle {
-    return this.sanitizer.bypassSecurityTrustStyle(`url(${this.wiki.backgroundImagePath})`);
+    return this.sanitizer.bypassSecurityTrustStyle(`linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${this.wiki.backgroundImagePath})`);
   }
 
   ngOnInit() {

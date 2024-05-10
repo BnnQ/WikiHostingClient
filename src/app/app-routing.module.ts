@@ -16,6 +16,7 @@ import {CreatePageComponent} from "./create-page/create-page.component";
 import {EditPageComponent} from "./edit-page/edit-page.component";
 import {SubscriptionsComponent} from "./subscriptions/subscriptions.component";
 import { WikiPageComponent } from './wiki-page/wiki-page.component';
+import {NotificationsComponent} from "./notifications/notifications.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: 'wiki/:id/editPage/:pageId', component: EditPageComponent },
   { path: 'pricing', component: SubscriptionsComponent },
   { path: 'page/:category', component: WikiPageComponent },
+  { path: 'notifications', component: NotificationsComponent }
 ];
 
 @NgModule({
