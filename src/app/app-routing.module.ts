@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'wiki/:id/contributors', component: WikiContributorsComponent },
   { path: 'wiki/:wikiTitle/:pageTitle', component: WikiComponent },
   { path: 'feed', component: FeedComponent },
-  { path: '/login', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
   { path: 'DEV', component: DevComponent },
   { path: 'search', component: SearchComponent },
