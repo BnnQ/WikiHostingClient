@@ -123,11 +123,12 @@
   display: block;
 }
 
-
 #content {
-  min-height: 100vh;
-  background-color: #18181f;
+  min-height: 50vh;
+  background-color: #1E2940E6;
+  backdrop-filter: blur(3px);
+  border: 1px solid #3761af;
   border-radius: 5px;
-  box-shadow: green 0px 0px 10px;
-  padding: 10px;
+  /*box-shadow: green 0px 0px 10px;*/
+  padding: 24px 36px;
 }

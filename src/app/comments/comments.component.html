@@ -1,0 +1,16 @@
+<div class="comments-section">
+  <h2>Comments</h2>
+  <div *ngFor="let comment of comments" class="comment">
+    <div class="comment-header">
+      <img [src]="comment.author?.avatarPath" alt="User Avatar" class="avatar">
+      <a class="user" *ngIf="comment.author" [href]="'/profile/' + comment.author.id">{{comment.author.userName}}</a>
+      <span class="dot">•</span>
+      <div class="timestamp">{{comment.postedAt | date:'dd.MM.yyyy'}}</div>
+    </div>
+    <p>{{comment.text}}</p>
+  </div>
+  <div class="new-comment">
+    <input type="text" [(ngModel)]="newCommentText" placeholder="Add a comment about this page">
+    <button (click)="addComment()">Post</button>
+  </div>
+</div>

@@ -36,7 +36,7 @@
         <hr id="hr3">
         <p>Process in-variables in a way that you want</p>
         <textarea id="js" name="js" rows="10" cols="10" formControlName="js" placeholder="Example:
-name = name.toUpper();"></textarea>
+name = name.toUpperCase();"></textarea>
       </div>
 
       <div class="group">
@@ -59,10 +59,9 @@ font-weight: bold;
       </div>
 
       <div class="group">
-        <h1>Image</h1>
+        <h1>Name</h1>
         <hr id="hr6">
-        <p>Finally, add the name and upload an example image for your template to make it recognizable and easy to find</p>
-        <input type="file" class="button" accept="image/*" (change)="onImageSelected($event)"/>
+        <p>Finally, add the name for your template to make it recognizable and easy to find</p>
         <input type="text" class="button" formControlName="name" placeholder="Template name"/>
       </div>
 

@@ -33,11 +33,11 @@
                       <fa-icon [icon]="faComment"></fa-icon>
                       {{page.numberOfComments}}
                     </div>
-                    <button class="share-btn">
+                    <button class="share-btn" (click)="copyShareLink(page.wikiId, page.id)">
                       <fa-icon [icon]="faShareSquare"></fa-icon>
                     </button>
                   </div>
-                  <a [routerLink]="['/wiki', page.wikiId]">
+                  <a [routerLink]="['/wiki', page.wikiId, 'page', page.id]">
                     <img src="assets/images/goToWiki.png">
                 </a>
                 </div>

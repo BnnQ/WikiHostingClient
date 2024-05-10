@@ -1,5 +1,7 @@
+import {Rating} from "./rating";
+
 export class Page {
-  constructor(public id: number, public wikiId: number, public authorId: number, public createdAt: Date, public editedAt: Date, public rawHtml: string, public processedHtml: string) {
+  constructor(public id: number, public wikiId: number, public authorId: number, public createdAt: Date, public editedAt: Date, public rawHtml: string, public processedHtml: string, public userRatings: Rating[]) {
 
   }
 }

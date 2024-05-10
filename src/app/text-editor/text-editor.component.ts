@@ -153,10 +153,11 @@ export class TextEditorComponent implements OnInit {
 
     const range = selection.getRangeAt(0);
     const selectedText = range.toString();
+    const encodedText = encodeURI(selectedText);
 
     const anchor = document.createElement('a');
-    anchor.textContent = selectedText;
-    anchor.href = selectedText;
+    anchor.textContent = encodedText;
+    anchor.href = encodedText;
 
     range.deleteContents();
     range.insertNode(anchor);

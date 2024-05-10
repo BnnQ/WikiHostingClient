@@ -1,0 +1,41 @@
+<!-- <div class="container">
+<h1>Complaint Form</h1>
+<form>
+    <label for="complaintType">Complaint Type:</label><br>
+    <input type="radio" id="spam" name="complaintType" value="spam">
+    <label for="spam">Spam</label><br>
+    <input type="radio" id="inappropriateContent" name="complaintType" value="inappropriateContent" (change)="showOtherInput = false">
+    <label for="inappropriateContent">Inappropriate Content</label><br>
+    <input type="radio" id="abuse" name="complaintType" value="abuse">
+    <label for="abuse">Abuse</label><br>
+    <input type="radio" id="violence" name="complaintType" value="violence" (change)="showOtherInput = false">
+    <label for="violence">Violence</label><br>
+    <input type="radio" id="pornography" name="complaintType" value="pornography" (change)="showOtherInput = false">
+    <label for="pornography">Pornography</label><br>
+    <input type="radio" id="hateSpeech" name="complaintType" value="hateSpeech" (change)="showOtherInput = false">
+    <label for="hateSpeech">Hate Speech</label><br>
+    <input type="radio" id="nationalism" name="complaintType" value="nationalism" (change)="showOtherInput = false">
+    <label for="nationalism">Nationalism</label><br>
+    <input type="radio" id="other" name="complaintType" value="other" (change)="showOtherInput = true">
+    <label for="other">Other</label><br>
+    <input type="text" id="otherText" name="otherText" placeholder="Please specify" *ngIf="showOtherInput"><br><br>
+    <button type="submit">Submit</button>
+</form>
+</div> -->
+
+
+<div class="container">
+  <h1>Complaint Form</h1>
+  <form id="complaintForm" (ngSubmit)="submitForm()">
+    <label><input type="radio" name="complaint" value="pornography" (change)="showOtherInput = false" [(ngModel)]="complaintType"> Pornography</label>
+    <label><input type="radio" name="complaint" value="violence" (change)="showOtherInput = false" [(ngModel)]="complaintType"> Violence</label>
+    <label><input type="radio" name="complaint" value="spam" (change)="showOtherInput = false" [(ngModel)]="complaintType"> Spam</label>
+    <label><input type="radio" name="complaint" value="hate_Speech" (change)="showOtherInput = false" [(ngModel)]="complaintType"> Hate Speech</label>
+    <label><input type="radio" name="complaint" value="scam" (change)="showOtherInput = false" [(ngModel)]="complaintType"> Scam/Fraud</label>
+    <label><input type="radio" name="complaint" value="copyright_Violation" (change)="showOtherInput = false" [(ngModel)]="complaintType"> Copyright Violation</label>
+    <label><input type="radio" name="complaint" value="misinformation" (change)="showOtherInput = false" [(ngModel)]="complaintType"> Misinformation</label>
+    <label><input type="radio" name="complaint" value="other" id="otherOption" (change)="showOtherInput = true" [(ngModel)]="complaintType"> Other</label>
+    <textarea id="otherText" name="otherText" *ngIf="showOtherInput" placeholder="Please specify..."></textarea>
+    <button type="submit" >Submit Complaint</button>
+  </form>
+</div>

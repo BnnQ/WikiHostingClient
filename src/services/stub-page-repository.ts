@@ -31,7 +31,8 @@ export class StubPageRepository implements IPageRepository {
       createdAt: new Date(),
       editedAt: new Date(),
       rawHtml: "<p>Hello, world!</p>",
-      processedHtml: "<p>Hello, world!</p>"
+      processedHtml: "<p>Hello, world!</p>",
+      userRatings: []
     },
     {
       id: 2,
@@ -40,7 +41,8 @@ export class StubPageRepository implements IPageRepository {
       createdAt: new Date(),
       editedAt: new Date(),
       rawHtml: "<p>Goodbye, world!</p>",
-      processedHtml: "<p>Goodbye, world!</p>"
+      processedHtml: "<p>Goodbye, world!</p>",
+      userRatings: []
     },
     {
       id: 3,
@@ -49,7 +51,8 @@ export class StubPageRepository implements IPageRepository {
       createdAt: new Date(),
       editedAt: new Date(),
       rawHtml: "<p>Foo</p>",
-      processedHtml: "<p>Foo</p>"
+      processedHtml: "<p>Foo</p>",
+      userRatings: []
     },
     {
       id: 4,
@@ -58,7 +61,8 @@ export class StubPageRepository implements IPageRepository {
       createdAt: new Date(),
       editedAt: new Date(),
       rawHtml: "<p>Bar</p>",
-      processedHtml: "<p>Bar</p>"
+      processedHtml: "<p>Bar</p>",
+      userRatings: []
     }
   ]
 
@@ -79,7 +83,8 @@ export class StubPageRepository implements IPageRepository {
       createdAt: new Date(),
       editedAt: new Date(),
       rawHtml: model.rawHtml,
-      processedHtml: model.rawHtml
+      processedHtml: model.rawHtml,
+      userRatings: []
     };
 
     this.pages.push(newPage);
