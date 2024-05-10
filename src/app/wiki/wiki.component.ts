@@ -7,7 +7,10 @@ import {IWikiRepository} from "../../services/abstractions/i-wiki-repository";
 import {Wiki} from "../../models/wiki";
 import {Page} from "../../models/page";
 import {IPageRepository} from "../../services/abstractions/i-page-repository";
-import {DomSanitizer} from "@angular/platform-browser";
+import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
+import { ModalService } from 'ngx-modal-ease';
+import { ModalReportComponent } from '../modal-report/modal-report/modal-report.component';
+import { Toast, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-wiki',
@@ -22,8 +25,10 @@ export class WikiComponent implements OnInit {
   pageId: number = 0;
   wikiTitle?: string;
   pageTitle?: string;
+  editorContent? : SafeHtml;
 
-  constructor(activatedRoute : ActivatedRoute, private readonly sanitizer : DomSanitizer, @Inject(SERVICE_IDENTIFIERS.IWikiRepository) private readonly wikiRepository : IWikiRepository, @Inject(SERVICE_IDENTIFIERS.IPageRepository) private readonly pageRepository : IPageRepository) {
+
+  constructor(private readonly modalService:ModalService,activatedRoute : ActivatedRoute, private readonly sanitizer : DomSanitizer, @Inject(SERVICE_IDENTIFIERS.IWikiRepository) private readonly wikiRepository : IWikiRepository, @Inject(SERVICE_IDENTIFIERS.IPageRepository) private readonly pageRepository : IPageRepository, private readonly toast:ToastrService) {
     this.wikiId = parseInt(activatedRoute.snapshot.paramMap.get('id')!);
     this.pageId = parseInt(activatedRoute.snapshot.paramMap.get('pageId') ?? '0');
     this.wikiTitle = activatedRoute.snapshot.paramMap.get('wikiTitle') ?? undefined;
@@ -66,6 +71,21 @@ export class WikiComponent implements OnInit {
       }
     }
   }
+
+
+  openTemplateMenu() {
+    this.modalService.open(ModalReportComponent).subscribe(reportData => {
+      if (!reportData) {
+        return;
+      }
+      console.log(reportData);
+      this.toast.success("Your complaint has been successfully submitted. Thank you for your feedback!");
+    });
+  }
+
+
+
+
 
   protected readonly faSearch = faSearch;
   protected readonly faComments = faComments;

@@ -53,6 +53,7 @@ import {ApiUserRepository} from "../services/api-user-repository";
 import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
 import { SafeHtmlToStringPipe } from '../pipes/safe-html-to-string/safe-html-to-string.pipe';
 import { WikiPageComponent } from './wiki-page/wiki-page.component';
+import { ModalReportComponent } from './modal-report/modal-report/modal-report.component';
 
 export const SERVICE_IDENTIFIERS = {
   IHttpService: new InjectionToken<IHttpService>('IHttpService'),
@@ -90,7 +91,8 @@ export const SERVICE_IDENTIFIERS = {
     ModalWikiSettingsComponent,
     SubscriptionsComponent,
     SafeHtmlToStringPipe,
-    WikiPageComponent
+    WikiPageComponent,
+    ModalReportComponent
   ],
   imports: [
     BrowserModule,
